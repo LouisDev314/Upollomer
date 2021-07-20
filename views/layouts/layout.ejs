@@ -4,10 +4,42 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Upollomer</title>
     </head>
     <body>
         <!-- import body of HTML files into here -->
+        <div class="languageSelector">
+            <p>|&#127760; Languages|</p>
+        </div>
+        <header class="mainHeader">
+            <!-- The title comes with icon -->
+            <h1 class="webTitle">Upollomer</h1>
+            <nav class="mainNav">
+                <ul>
+                    <li>Ideas</li>
+                    <li>Co-Dreamers</li>
+                    <li>Incubators</li>
+                    <strong><li>Start-Up Your Dream</li></strong>
+                    <!-- Search is through the whole website -> add a blank search bar -->
+                    <!-- also create a REST API for search through the whole website -->
+                    <li>Search &#128269;</li>
+                    <li><a href="login.ejs">Log in</a></li>
+                    <!-- need to provide city -->
+                    <li><a href="register.ejs">Register</a></li>
+                </ul>
+            </nav>
+        </header>
+        <hr>
+        <nav class="co-Nav">
+            <ul>
+                <!-- Browse under a category -->
+                <li>Browse</li>
+                <li>Sort by</li>
+            </ul>
+        </nav>
         <%- body %> 
     </body>
+    <hr>
+    <footer>
+
+    </footer>
 </html>
