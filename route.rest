@@ -1,0 +1,31 @@
+# To test the REST API (since web can't really test the REST API well without interaction)
+
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/users/
+
+###
+POST http://localhost:3000/users
+# let the server know json is sending to it
+Content-Type: application/json
+
+{
+    "username": "Louis",
+    "email": "w@W",
+    "password": "abc123",
+    "username": "James",
+    "email": "ok@OK",
+    "password": "def321"
+}
+
+###
+DELETE  http://localhost:3000/users/
+
+###
+PATCH http://localhost:3000/users/
+Content-Type: application/json
+
+{
+    "email": "el@email.com"
+}
