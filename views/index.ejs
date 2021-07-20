@@ -1,35 +1,51 @@
 <html>
     <head>
         <title>Upollomer</title>
-        <meta name = 'description' content = "Upollomer is the website that contains the most complete start-up agglomeration to connect people who share the same goal and enthusiasm about having a start up. The aim of Upollomer is more than just provide a platform to gather passionate people but also trying to achieve an ultimate objective, the blockchainization of technical ability. ">
+        <meta name="description" content = "Upollomer is the website that contains the most complete start-up agglomeration to connect people, especially local youth, who share the same goal and enthusiasm about having a start up. The aim of Upollomer is more than just provide a platform to gather passionate people but also trying to achieve an ultimate objective, the blockchainization of technical ability.">
     </head>
     <body>
-        <header class='mainHeader'>
+        <div class="languageSelector">
+            <p>|&#127760; Languages|</p>
+        </div>
+        <header class="mainHeader">
             <!-- The title comes with icon -->
-            <h1 class='webTitle'>Upollomer</h1>
-            <nav class='mainNav'>
+            <h1 class="webTitle">Upollomer</h1>
+            <nav class="mainNav">
                 <ul>
                     <li>Ideas</li>
                     <li>Co-Dreamers</li>
                     <li>Incubators</li>
                     <strong><li>Start-Up Your Dream</li></strong>
                     <!-- Search is through the whole website -> add a blank search bar -->
+                    <!-- also create a REST API for search through the whole website -->
                     <li>Search &#128269;</li>
-                    <li>Log in</li>
-                    <li>Register</li>
+                    <li><a href="login.ejs">Log in</a></li>
+                    <!-- need to provide city -->
+                    <li><a href="register.ejs">Register</a></li>
                 </ul>
             </nav>
         </header>
         <hr>
-        <nav>
-            <ul>
-                <strong><li>Popular</li></strong>
-                <strong><li>Cutting-Edge</li></strong>
-                <!-- Below 2 are list boxes -->
-                <!-- Browse is search under a category -->
-                <li>Browse</li>
-                <li>Sort by</li>
-            </ul>
-        </nav>
+        <main>
+            <nav class="co-Nav">
+                <ul>
+                    <!-- Browse under a category -->
+                    <li>Browse</li>
+                    <li>Sort by</li>
+                </ul>
+            </nav>
+            <section class="popular-flex">
+                <strong>Popular</strong>
+
+            </section>
+            <section class="cuttingEdge-flex">
+                <strong>Cutting-Edge (including new research papers, market news, etc.)</strong>
+
+            </section>
+        </main>
     </body>
+    <hr>
+    <footer>
+
+    </footer>
 </html>

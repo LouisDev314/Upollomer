@@ -37,8 +37,4 @@ app.use(express.static('public'))  // where the public files will go (e.g. style
 }
 
 // for the server to tell us what port its listening to
-const port = 3000
-if (process.env.PORT) {
-    port = process.env.PORT
-}
-app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
+app.listen(process.env.PORT || 3000, () => console.log(`Listening at http://localhost:3000`))
