@@ -16,15 +16,15 @@
             <nav class="mainNav">
                 <ul>
                     <li>Ideas</li>
-                    <li>Co-Dreamers</li>
+                    <li>Co-Dreamers (supplier, customers)</li>
                     <li>Incubators</li>
                     <strong><li>Start-Up Your Dream</li></strong>
                     <!-- Search is through the whole website -> add a blank search bar -->
                     <!-- also create a REST API for search through the whole website -->
                     <li>Search &#128269;</li>
-                    <li><a href="login.ejs">Log in</a></li>
+                    <li><a href="login">Log in</a></li>
                     <!-- need to provide city -->
-                    <li><a href="register.ejs">Register</a></li>
+                    <li><a href="register">Register</a></li>
                 </ul>
             </nav>
         </header>
@@ -36,7 +36,8 @@
                 <li>Sort by</li>
             </ul>
         </nav>
-        <%- body %> 
+        <!-- Independent content of pages -->
+        <%- body %>
     </body>
     <hr>
     <footer>

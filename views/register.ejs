@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Register profile —— Upollomer</title>
+    </head>
+    <body>
+        <header>
+            <h1>Upollomer</h1>
+            <h2>Register</h2>
+        </header>
+        <section class="registerForm">
+            <form action="/register" method="POST">
+                <div>
+                    <label for="username">Username</label>
+                    <!-- id -> for | name -> for server calling purpose -->
+                    <input type="text" id="name" name="username" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+    </body>
+</html>
