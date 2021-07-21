@@ -9,7 +9,19 @@
         </header>
         <section class="loginForm">
             <form action="/login" method="POST">
-                
+                <!-- Might add username login too -->
+                <div>
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <br>
+                <div>
+                    <label for="password">Password</label>
+                    <br>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <p><button type="submit">Log in</button> or <a href="/register">Create profile</p>
             </form>
         </section>
     </body>
