@@ -23,13 +23,14 @@ app.use(expressLayouts); // allows to create a layout file for all of HTML
 app.use(express.static("public")); // call public files to HTML or ejs (e.g. stylesheets, js, pics)
 app.use(express.json()); // allow server to accept json as a body for get/post request from REST API (a json API)
 
-// Routers
+// Routes (Controller)
 app.use("/", require("./routes/index"));
 app.use("/login", require("./routes/login"));
 app.use("/register", require("./routes/register"));
 app.use("/users", require("./routes/users"));
+app.use('/creators', require('./routes/creators'))
 
-// RESTful user database (w/ MVC model)
+// RESTful database (w/ MVC model)
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection; // events for connected db
 db.on("error", (error) => console.error(error));
@@ -45,6 +46,7 @@ app.use(session({
     saveUninitialized: false  // empty session objects won't be saved
     })
 );
+
 // passport.js
 app.use(passport.initialize());
 app.use(passport.session()); // save the login session
