@@ -3,17 +3,12 @@ const router = express.Router();
 
 // All creators
 router.get('/', (req, res) => {
-    res.render('creators/index')
+    res.render('co-dreamers/index')
 });
 
 // New creators
 router.get('/new', (req, res) => {
-    res.render('creators/new')
-});
-
-// Create creator route
-router.post('/', (req, res) => {
-    res.send('Creating a creator')
+    res.render('co-dreamers/new')
 });
 
 module.exports = router;

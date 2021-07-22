@@ -27,8 +27,8 @@ app.use(express.json()); // allow server to accept json as a body for get/post r
 app.use("/", require("./routes/index"));
 app.use("/login", require("./routes/login"));
 app.use("/register", require("./routes/register"));
-app.use("/users", require("./routes/users"));
-app.use('/creators', require('./routes/creators'))
+// app.use("/users", require("./routes/users"));
+app.use('/co-dreamers', require('./routes/co-dreamers'))
 
 // RESTful database (w/ MVC model)
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -36,22 +36,22 @@ const db = mongoose.connection; // events for connected db
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
 
-// authentication
-app.use(express.urlencoded({ extended: false })); // allow forms to post as a req.body -> req.body.${the namefield}
-app.use(flash())  // flash message
-app.use(session({
-    // key that encrypt all information
-    secret: process.env.SESSION_SECRET,
-    resave: false,  // do not delete idle sessions
-    saveUninitialized: false  // empty session objects won't be saved
-    })
-);
+// // authentication
+// app.use(express.urlencoded({ extended: false })); // allow forms to post as a req.body -> req.body.${the namefield}
+// app.use(flash())  // flash message
+// app.use(session({
+//         // key that encrypt all information
+//         secret: process.env.SESSION_SECRET,
+//         resave: false,  // do not delete idle sessions
+//         saveUninitialized: false  // empty session objects won't be saved
+//     })
+// );
 
-// passport.js
-app.use(passport.initialize());
-app.use(passport.session()); // save the login session
-// when log in -> serialize and deserialize users
-// serialized user will be saved to req.user
-passport.serializeUser((user, done) => done(null, user.id));
+// // passport.js
+// app.use(passport.initialize());
+// app.use(passport.session()); // save the login session
+// // when log in -> serialize and deserialize users
+// // serialized user will be saved to req.user
+// passport.serializeUser((user, done) => done(null, user.id));
 
 app.listen(process.env.PORT || 3000, () => console.log(`Listening at http://localhost:3000`));

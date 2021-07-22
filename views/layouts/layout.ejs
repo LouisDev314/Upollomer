@@ -5,38 +5,30 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <!-- include header from partials file -->
+    <%- include('../partials/header') %>
+    <hr>
     <body>
-        <!-- import body of HTML files into here -->
-        <div class="languageSelector">
-            <p>Languages&#127760;</p>
-        </div>
-        <header class="mainHeader">
-            <!-- The title comes with icon -->
-            <h1 class="webTitle">Upollomer</h1>
-            <nav class="mainNav">
-                <ul>
-                    <li>Ideas</li>
-                    <li><a href="creators">Co-Dreamers (supplier, customers)</a></li>
-                    <li>Incubators</li>
-                    <strong><li>Start-Up Your Dream</li></strong>
-                    <!-- Search is through the whole website -> add a blank search bar -->
-                    <!-- also create a REST API for search through the whole website -->
-                    <li>Search &#128269;</li>
-                    <li><a href="login">Log in</a></li>
-                    <!-- need to provide city -->
-                    <li><a href="register">Register</a></li>
-                </ul>
-            </nav>
-        </header>
-        <hr>
-        <nav class="co-Nav">
+        <nav class="bodyNav">
             <ul>
                 <!-- Browse under a category -->
-                <li>Browse</li>
-                <li>Sort by</li>
+                <label for="browse">Browse</label>
+                <select name="browse" id="browse">
+                    <option value="blank"></option>
+                    <option value="technology">Technology</option>
+                    <option value="biology">Biology</option>
+                </select>
+                &emsp;
+                <label for="sort">Sort by</label>
+                <select name="sort" id="sort">
+                    <option value="blank"></option>
+                    <option value="hit">Hit</option>
+                    <option value="new">New</option>
+                    <option value="top">Top</option>
+                </select>
             </ul>
         </nav>
-        <!-- Independent content of pages -->
+        <!-- import body of ejs here -->
         <%- body %>
     </body>
     <hr>
