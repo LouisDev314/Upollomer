@@ -29,6 +29,7 @@ app.use("/login", require("./routes/login"));
 app.use("/register", require("./routes/register"));
 // app.use("/users", require("./routes/users"));
 app.use('/co-dreamers', require('./routes/co-dreamers'))
+app.use('/ideas', require('./routes/ideas'))
 
 // RESTful database (w/ MVC model)
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
