@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         res.render('search', {
             layout: 'layouts/search',
             ideas: ideas,
-            searchOptions: req.query
+            searchOptions: req.query.search
         });
     } catch {
         res.redirect('ideas');
