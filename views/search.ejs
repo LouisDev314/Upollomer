@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Search result for <%= searchOptions.search %> —— Upollomer</title>
+    </head>
+    <body>
+        <h3>Dynamically display content here</h3>
+        <% ideas.forEach(idea => { %>
+            <div><%= idea.title %></div>
+            <div><%= idea.description %></div>
+            <br>
+        <% }) %>
+    </body>
+</html>

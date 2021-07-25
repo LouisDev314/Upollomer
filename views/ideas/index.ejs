@@ -1,1 +1,6 @@
-This is the INDEX ideas page
+<h3>All Ideas</h3>
+<% ideas.forEach(idea => { %>
+    <div><%= idea.title %></div>
+    <div><%= idea.description %></div>
+    <br>
+<% }) %>

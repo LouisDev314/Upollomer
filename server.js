@@ -22,14 +22,16 @@ app.set("layout", "layouts/layout"); // all HTML file will follow this customize
 app.use(expressLayouts); // allows to create a layout file for all of HTML
 app.use(express.static("public")); // call public files to HTML or ejs (e.g. stylesheets, js, pics)
 app.use(express.json()); // allow server to accept json as a body for get/post request from REST API (a json API)
+app.use(express.urlencoded({ limit: '10mb', extended: false })); // allow forms to post as a req.body -> req.body.${the namefield}
 
 // Routes (Controller)
 app.use("/", require("./routes/index"));
 app.use("/login", require("./routes/login"));
 app.use("/register", require("./routes/register"));
 // app.use("/users", require("./routes/users"));
-app.use('/co-dreamers', require('./routes/co-dreamers'))
-app.use('/ideas', require('./routes/ideas'))
+app.use('/co-dreamers', require('./routes/co-dreamers'));
+app.use('/ideas', require('./routes/ideas'));
+app.use('/search', require('./routes/search'));
 
 // RESTful database (w/ MVC model)
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -38,7 +40,6 @@ db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("Connected to Database"));
 
 // // authentication
-// app.use(express.urlencoded({ extended: false })); // allow forms to post as a req.body -> req.body.${the namefield}
 // app.use(flash())  // flash message
 // app.use(session({
 //         // key that encrypt all information
