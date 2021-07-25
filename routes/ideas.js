@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
         const newIdea = await idea.save();
         // element on the page changes -> use redirect \else use render
         // res.redirect(`ideas/${newIdea.id}`)
-        res.redirect('ideas/index');
+        res.redirect('ideas');
     } catch {
         res.render('ideas/create', {
             idea: idea,
