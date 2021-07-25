@@ -1,7 +1,12 @@
-<h2>All Ideas</h2>
-<h3><a href="ideas/create">I got an Idea</a></h3>
-<% ideas.forEach(idea => { %>
-    <div><%= idea.title %></div>
-    <div><%= idea.description %></div>
-    <br>
-<% }) %>
+<html>
+    <head>
+        <title>All Ideas —— Upollomer</title>
+    </head>
+    <body>
+        <% ideas.forEach(idea => { %>
+            <div><%= idea.title %></div>
+            <div><%= idea.description %></div>
+            <br>
+        <% }) %>
+    </body>
+</html>
