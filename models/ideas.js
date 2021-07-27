@@ -5,6 +5,14 @@ const ideaSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    category: {
+        type: String,
+        required: true
+    },
+    genre: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -12,6 +20,20 @@ const ideaSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    region: {
+        type: String,
+        required: true
+    },
+    ideaStatus: {
+        type: String,
+        required: true
+    },
+    coverImageName: {
+        type: String
+    },
+    devLogName: {
+        type: String
     }
 });
 

@@ -32,3 +32,11 @@ This is the init version of Upollomer, built basic framework, user database and 
 
 5. Add a Map selection box pair for project creation & project browse
 
+6. Allow to invite co-dreamer to an Idea
+
+7. Allow user to send joining request to an Idea
+
+8. Instant chat system
+
+9. Development Tips page
+
