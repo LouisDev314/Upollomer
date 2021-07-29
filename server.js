@@ -1,34 +1,34 @@
 // if not in development environment -> do not parse the dotenv file
-if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config();
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
 }
 
 // npm dependencies
-const express = require("express");
+const express = require('express');
 const app = express();
-const mongoose = require("mongoose");
-const expressLayouts = require("express-ejs-layouts");
-const session = require("express-session");
-const passport = require("passport");
-const localStrategy = require("passport-local").Strategy; // strategy can be against local db or google or FB
-const bcrypt = require("bcrypt");
-const flash = require("express-flash")
+const mongoose = require('mongoose');
+const expressLayouts = require('express-ejs-layouts');
+const session = require('express-session');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy; // strategy can be against local db or google or FB
+const bcrypt = require('bcrypt');
+const flash = require('express-flash')
 const methodOverride = require('method-override')
 
 // default view path
-app.set("view engine", "ejs");
-app.set("views", __dirname + "/views"); // setting where views are coming from
-app.set("layout", "layouts/layout"); // all HTML file will follow this customized HTML skeleton layout -> (default) views/layouts/layout.ejs
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views'); // setting where views are coming from
+app.set('layout', 'layouts/layout'); // all HTML file will follow this customized HTML skeleton layout -> (default) views/layouts/layout.ejs
 app.use(expressLayouts); // allows to create a layout file for all of HTML
-app.use(express.static("public")); // call public files to HTML or ejs (e.g. stylesheets, js, pics)
+app.use(express.static(__dirname + 'public')); // call public files to HTML or ejs (e.g. stylesheets, js, pics)
 app.use(express.json()); // allow server to accept json as a body for get/post request from REST API (a json API)
 app.use(express.urlencoded({ limit: '10mb', extended: false })); // allow forms to post as a req.body -> req.body.${the namefield}
 
 // Routes (Controller)
-app.use("/", require("./routes/index"));
-app.use("/login", require("./routes/login"));
-app.use("/register", require("./routes/register"));
-// app.use("/users", require("./routes/users"));
+app.use('/', require('./routes/index'));
+app.use('/login', require('./routes/login'));
+app.use('/register', require('./routes/register'));
+// app.use('/users', require('./routes/users'));
 app.use('/co-dreamers', require('./routes/co-dreamers'));
 app.use('/ideas', require('./routes/ideas'));
 app.use('/search', require('./routes/search'));
@@ -36,8 +36,8 @@ app.use('/search', require('./routes/search'));
 // RESTful database (w/ MVC model)
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection; // events for connected db
-db.on("error", (error) => console.error(error));
-db.once("open", () => console.log("Connected to Database"));
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('Connected to Database'));
 
 // // authentication
 // app.use(flash())  // flash message

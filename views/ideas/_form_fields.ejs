@@ -1,6 +1,45 @@
-<label for="title">Title</label>
-<input type="text" id="title" name="title" value="<%= idea.title %>">
+<!-- category icon -->
+<!-- how to export option value from here -->
+<div class="ideaTag">
+    <select name="category" id="category">
+        <option selected disabled hidden>Select a category ——</option>
+        <option value="game">Games</option>
+        <option value="film">Film</option>
+    </select>
+    &emsp;
+    <!-- dynamically shown -->
+    <select name="genre" id="genre">
+        <option selected disabled hidden>Select a genre ——</option>
+        <option value=""></option>
+    </select>
+</div>
 <br>
+<div class="ideaTitle">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="<%= idea.title %>">
+</div>
 <br>
-<label for="description">Description</label>
-<input type="text" id="description" name="description" value="<%= idea.description %>">
+<div class="ideaDescription">
+    <label for="description">Description</label>
+    <input type="text" id="description" name="description" value="<%= idea.description %>">
+</div>
+<br>
+<div class="ideaRegion">
+    <label for="region">Region</label>
+    <br>
+    <select name="region" id="region">
+        <option value="" selected>Anywhere on Earth</option>
+        <!-- import all countries here -->
+    </select>
+</div>
+<br>
+<div class="ideaStatus">
+    <label for="status">Idea Status</label>
+    <br>
+    <select name="status" id="status">
+        <option value="" selected>Initializing</option>
+        <option value="">In progress</option>
+        <option value="">Pre-launch</option>
+        <option value="">Post-launch</option>
+    </select>
+</div>

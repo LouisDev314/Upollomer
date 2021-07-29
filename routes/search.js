@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
     try {
         const ideas = await Idea.find(searchOptions);
         res.render('search', {
-            layout: 'layouts/search',
             ideas: ideas,
             searchOptions: req.query
         });

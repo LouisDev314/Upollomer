@@ -6,7 +6,7 @@ Nurture entrepreneurship
 
 <u>v1.0</u>
 
-This is the init version of Upollomer, built basic framework, user database and REST API
+This is the init version of Upollomer, basic framework
 
 **<u>Task</u>**
 
@@ -28,15 +28,23 @@ This is the init version of Upollomer, built basic framework, user database and 
 
    b. check & manage My Idea
 
-4. Selection boxes dynamically selected on Ideas index page
+4. **Selection boxes dynamically selected on Ideas index page**
 
-5. Add a Map selection box pair for project creation & project browse
+   [^]: Sort of Solved
 
-6. Allow to invite co-dreamer to an Idea
+5. **Get value from selection box -> import to Schema**
 
-7. Allow user to send joining request to an Idea
+6. Add a Map selection box pair for project creation & project browse
 
-8. Instant chat system
+7. Allow to invite co-dreamer to an Idea
 
-9. Development Tips page
+8. Allow user to send joining request to an Idea
+
+9. Instant chat system
+
+10. Development Tips page
+
+11. Crowd funding function
+
+12. Online store (?)
 

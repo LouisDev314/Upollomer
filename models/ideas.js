@@ -25,10 +25,11 @@ const ideaSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    ideaStatus: {
+    status: {
         type: String,
         required: true
     },
+    // files will be stored in file system
     coverImageName: {
         type: String
     },

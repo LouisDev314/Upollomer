@@ -14,10 +14,15 @@
                 <li><a href="../ideas">Ideas</a></li>
                 <li><a href="../co-dreamers">Co-Dreamers (supplier, customers)</a></li>
                 <li>Incubators</li>
+                <li>Forums</li>
                 <strong><li><a href="../ideas/create">Eureka! (Start your Idea!)</a></li></strong>
                 <li>
                     <form action="search" method="GET" >
-                        <input type="text" name="search" placeholder="Search">
+                        <% if (locals.searchOptions) { %> 
+                            <input type="text" name="search" value="<%= searchOptions.search %>">
+                        <% } else { %>
+                            <input type="text" name="search" placeholder="Search">
+                        <% } %>
                         <button type="submit">&#128269;</button>
                     </form>
                 </li>

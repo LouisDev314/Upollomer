@@ -6,12 +6,11 @@ const Idea = require('../models/ideas');
 router.get('/', async (req, res) => {
     try {
         const ideas = await Idea.find();
-        res.render(
-            'ideas/index', { 
-                layout: 'layouts/ideas',
-                ideas: ideas
-            }
-        );
+        res.render('ideas/index', {
+            route: req.originalUrl,
+            layout: 'layouts/ideas',
+            ideas: ideas
+        });
     } catch {
         res.redirect('/');
     }
@@ -19,12 +18,18 @@ router.get('/', async (req, res) => {
 
 // New idea route
 router.get('/new', (req, res) => {
-    res.render('ideas/new', { layout: 'layouts/ideas' });
+    res.render('ideas/new', {
+        route: req.originalUrl,
+        layout: 'layouts/ideas'
+    });
 });
 
 // Top idea route
 router.get('/top', (req, res) => {
-    res.render('ideas/top', { layout: 'layouts/ideas' });
+    res.render('ideas/top', {
+        route: req.originalUrl,
+        layout: 'layouts/ideas'
+    });
 });
 
 // Going to create a new idea project
@@ -48,7 +53,8 @@ router.post('/', async (req, res) => {
         // element on the page changes -> use redirect \else use render
         // res.redirect(`ideas/${newIdea.id}`)
         res.redirect('ideas');
-    } catch {
+    } catch (e) {
+        console.log(e.message);
         res.render('ideas/create', {
             idea: idea,
             errorMessage: 'Cannot implement this idea'
