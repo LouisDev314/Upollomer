@@ -20,15 +20,15 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views'); // setting where views are coming from
 app.set('layout', 'layouts/layout'); // all HTML file will follow this customized HTML skeleton layout -> (default) views/layouts/layout.ejs
 app.use(expressLayouts); // allows to create a layout file for all of HTML
-app.use(express.static(__dirname + 'public')); // call public files to HTML or ejs (e.g. stylesheets, js, pics)
+app.use(express.static(__dirname + 'public'));
 app.use(express.json()); // allow server to accept json as a body for get/post request from REST API (a json API)
-app.use(express.urlencoded({ limit: '10mb', extended: false })); // allow forms to post as a req.body -> req.body.${the namefield}
+app.use(express.urlencoded({ limit: '10mb', extended: false })); // allow forms to post as a req.body -> req.body.${name}
 
 // Routes (Controller)
 app.use('/', require('./routes/index'));
 app.use('/login', require('./routes/login'));
 app.use('/register', require('./routes/register'));
-// app.use('/users', require('./routes/users'));
+app.use('/users', require('./routes/users'));
 app.use('/co-dreamers', require('./routes/co-dreamers'));
 app.use('/ideas', require('./routes/ideas'));
 app.use('/search', require('./routes/search'));

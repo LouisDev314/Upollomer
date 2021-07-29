@@ -35,6 +35,10 @@ const ideaSchema = new mongoose.Schema({
     },
     devLogName: {
         type: String
+    },
+    coDreamer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'  // this is the module exports from user model
     }
 });
 

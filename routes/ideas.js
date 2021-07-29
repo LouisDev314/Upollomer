@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Idea = require('../models/ideas');
+const Idea = require('../models/idea');
 
 // All ideas route <- get req send through path query
 router.get('/', async (req, res) => {

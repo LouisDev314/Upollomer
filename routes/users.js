@@ -2,7 +2,7 @@
 
 const express = require('express')
 const router = express.Router()  // make it an express router
-const User = require('../models/users')  // the user model contains all users
+const User = require('../models/user')  // the user model contains all users
 
 // a middleware function to get a user from db
 async function getUser(req, res, next) {

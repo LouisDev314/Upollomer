@@ -1,5 +1,4 @@
 // create a model connect with db (under the MVC design pattern)
-
 const mongoose = require('mongoose')
 
 // intake a js object which has keys to all the properties of users

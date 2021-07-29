@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Idea = require('../models/ideas')
+const Idea = require('../models/idea')
 
 // Get the thing user searched
 router.get('/', async (req, res) => {
