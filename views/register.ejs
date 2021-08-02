@@ -4,38 +4,39 @@
     </head>
     <body>
         <header>
-            <h1>Upollomer</h1>
+            <h1><a href="/">Upollomer</a></h1>
             <h2>Register</h2>
         </header>
         <section class="registerForm">
             <form action="/register" method="POST">
-                <div>
-                    <label for="username">Username</label>
+                <fieldset>
+                    <div class="username">
+                        <label for="username">Username</label>
+                        <br>
+                        <input type="text" id="username" name="username" required>
+                    </div>
                     <br>
-                    <!-- id -> for || name -> for server calling purpose -->
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <br>
-                <div>
-                    <label for="email">Email</label>
+                    <div class="email">
+                        <label for="email">Email</label>
+                        <br>
+                        <input type="email" id="email" name="email" required>
+                    </div>
                     <br>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <br>
-                <div>
-                    <label for="password">Password</label>
+                    <div class="password">
+                        <label for="password">Password</label>
+                        <br>
+                        <input type="password" id="password" name="password" required>
+                    </div>
                     <br>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <br>
-                <div>
-                    <label for="r-password">Repeat password</label>
-                    <br>
-                    <input type="password" id="r-password" name="r-password" required>
-                </div>
-                <p><button type="submit">Create profile</button> or already have a profile? <a href="/login">Log in</p>
+                    <div class="r_password">
+                        <label for="r_password">Repeat password</label>
+                        <br>
+                        <input type="password" id="r_password" name="r_password" required>
+                    </div>
+                    <p><button type="submit">Create profile</button> or already have a profile? <a href="/login">Log in</a></p>
+                </fieldset>
             </form>
-            <!-- Probably need google strategy/ FB strategy to log in -->
+            <!-- Need google strategy/ FB strategy to log in -->
         </section>
     </body>
 </html>

@@ -8,6 +8,10 @@ Nurture entrepreneurship
 
 This is the init version of Upollomer, basic framework
 
+**<u>Aim</u>**
+
+- 
+
 **<u>Task</u>**
 
 1. Login & Register
@@ -36,9 +40,11 @@ This is the init version of Upollomer, basic framework
 
 6. Add a Map selection box pair for project creation & project browse
 
-7. Allow to invite co-dreamer to an Idea
+7. Invite co-dreamer to an Idea
 
-8. Allow user to send joining request to an Idea
+8. Send request to join an Idea
+
+   Provide text-space to write anything want to introduce
 
 9. Instant chat system
 
@@ -47,4 +53,14 @@ This is the init version of Upollomer, basic framework
 11. Crowd funding function
 
 12. Online store (?)
+
+**<u>Verification & Security</u>**
+
+1. username restriction
+2. pw length & restrictions
+3. verify email via code
+4. OAuth <- cybersecurity
+5. limit amount of db query
+6. add cache mechanism
+7. 
 

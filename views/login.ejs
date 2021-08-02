@@ -4,25 +4,27 @@
     </head>
     <body>
         <header>
-            <h1>Upollomer</h1>
+            <h1><a href="/">Upollomer</a></h1>
             <h2>Log in</h2>
         </header>
         <section class="loginForm">
-            <form action="/login" method="POST">
-                <!-- Might add username login too -->
-                <div>
-                    <label for="email">Email</label>
+            <fieldset>
+                <form action="/login" method="POST">
+                    <!-- Need to add email login too -->
+                    <div>
+                        <label for="username">Username</label>
+                        <br>
+                        <input type="username" id="username" name="username" required>
+                    </div>
                     <br>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <br>
-                <div>
-                    <label for="password">Password</label>
-                    <br>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <p><button type="submit">Log in</button> or <a href="/register">Create profile</p>
-            </form>
+                    <div>
+                        <label for="password">Password</label>
+                        <br>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <p><button type="submit">Log in</button> or <a href="/register">Create profile</p>
+                </form>
+            </fieldset>
         </section>
     </body>
 </html>

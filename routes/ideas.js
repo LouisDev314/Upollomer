@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 // New idea route
 router.get('/new', (req, res) => {
     res.render('ideas/new', {
-        route: req.originalUrl,
+        route: req.originalUrl,  // this is for selection box selected dynamically
         layout: 'layouts/ideas'
     });
 });
@@ -45,8 +45,12 @@ router.get('/create', (req, res) => {
 // post req send through body
 router.post('/', async (req, res) => {
     const idea = new Idea({
+        // category: req.body.category,
+        // genre: req.body.genre,
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        // region: req.body.region,
+        // status: req.body.status
     });
     try {
         const newIdea = await idea.save();
