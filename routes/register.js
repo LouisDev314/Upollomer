@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const Creator = require('../models/creator');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 
 

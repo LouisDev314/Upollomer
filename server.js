@@ -15,8 +15,8 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layouts/layout'); // all HTML file will follow this customized HTML skeleton layout -> (default) views/layouts/layout.ejs
 app.use(expressLayouts); // allows to create a layout file for all of HTML
 app.use(express.static(__dirname + 'public'));
-app.use(express.json()); // allow server to accept json as a body for get/post request from REST API (a json API)
-app.use(express.urlencoded({ extended: true })); // allow forms to post as a req.body -> req.body.${name}
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // parse different requests types as req.body (form posting etc.) -> req.body.${name}
 
 // routes (controllers)
 app.use('/', require('./routes/index'));
