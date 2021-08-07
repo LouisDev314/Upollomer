@@ -8,35 +8,6 @@ Nurture entrepreneurship
 
 This is the init version of Upollomer, basic framework
 
-**<u>Notes</u>**
-
-- state management is often used as a frontend framework by React.js/ Angular, etc.
-- express-session is for local storage only -> in production mode, need session store
-
-**<u>Node.js disadvantages</u>**
-
-- Due to single-thread property, can't handle dense computation (have to wait for event loop)
-- Shortage in communicating among multithread processing program (can't do multiplex -> render frontend while doing computation at the backend)
-- Node.js is better for logically simple but I/O is frequent, NOT complicated logic
-- 
-
-**<u>Node.js insufficient</u>**
-
-1. Recovery of the server after fixing bugs without shutting down
-2. Log file function (access & error log)
-   - access log: log every req, include IP address, access time and path, server response and proxy string
-   - error log: write errors to the log stream
-
-3. Multi-threading (single-thread property of Node.js will limit throughput while the req amount is huge & waste of efficacy)
-4. Script to start & stop server
-5. Port sharing <- reverse proxy to achieve port sharing based on function variable name
-
-***<u>Solutions</u>***
-
-2. Morgan & Winston
-3. cluster -> inter-process program port reuse & 
-4. 
-
 **<u>Aim</u>**
 
 - 
