@@ -5,13 +5,15 @@ const Idea = require('../models/idea');
 // All ideas route <- get req send through path query
 router.get('/', async (req, res) => {
     try {
+        // !!!
         const ideas = await Idea.find();
         res.render('ideas/index', {
             route: req.originalUrl,
             layout: 'layouts/ideas',
             ideas: ideas
         });
-    } catch {
+    } catch (e) {
+        console.log(e);
         res.redirect('/');
     }
 });

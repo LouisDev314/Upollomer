@@ -17,7 +17,7 @@
                 <li>Forums</li>
                 <strong><li><a href="../ideas/create">Eureka! (Start your Idea!)</a></li></strong>
                 <li>
-                    <form action="search" method="GET" >
+                    <form action="/search" method="GET" >
                         <% if (locals.searchOptions) { %> 
                             <input type="text" name="search" value="<%= searchOptions.search %>">
                         <% } else { %>
