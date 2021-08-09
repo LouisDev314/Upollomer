@@ -27,17 +27,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // parse different requests types as req.body (form posting etc.) -> req.body.${name}
 
 // session store
-// const sessionStore = new MongoStore({
-//     mongoUrl: process.env.DATABASE_URL,
-//     collection: 'sessions'  // the name of the collection for session storage
-// });
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true,  // should use false here? reduce server storage usage
-//     store: sessionStore,
-//     cookie: { maxAge: 1000 * 60 * 60 * 24 }
-// }));
+const sessionStore = new MongoStore({
+    mongoUrl: process.env.DATABASE_URL,
+    collection: 'sessions'  // the name of the collection for session storage
+});
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,  // should use false here? reduce server storage usage
+    store: sessionStore,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
+}));
 
 // routes (controllers)
 app.use('/', require('./routes/index'));
