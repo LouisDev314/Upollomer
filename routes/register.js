@@ -13,14 +13,14 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     if (req.body.password !== req.body.r_password) {
-        req.flash('error', 'Mismatched password. Please enter the same password twice.');
-        res.redirect('/');
+        // TODO: flash: 'Mismatched password. Please enter the same password twice.'
+        return res.redirect('/register');
     }
     try {
-        const creatorExist = await Creator.findOne(req.body.username);
+        const creatorExist = await Creator.findOne({ username: req.body.username });
         if (creatorExist) {
-            req.flash('error', 'Username already exists.');
-            return res.redirect('/');
+            // TODO: flash: 'Username already exists.'
+            return res.redirect('/register');
         }
         const hash = await bcrypt.hash(req.body.password, 10);
         const newCreator = new Creator({
@@ -29,12 +29,11 @@ router.post('/', async (req, res) => {
             password: hash
         });
         await newCreator.save();
-        req.session.creator = newCreator;
-        req.flash('success', 'Registered profile successfully!');
+        // TODO: flash: 'Profile created successfully!'
         res.redirect('/login');
     } catch (e) {
         console.log('Status 400: ' + e.message);
-        res.redirect('/');
+        res.redirect('/register');
     }
 });
 

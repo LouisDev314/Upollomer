@@ -27,17 +27,17 @@ app.use(passport.initialize());  // refresh passport middleware every time
 app.use(passport.session());
 
 // FIXME: going to be replaced by JWT
-const sessionStore = new MongoStore({
-    mongoUrl: process.env.DATABASE_URL,
-    collection: 'sessions'  // the name of the collection for session storage
-});
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: sessionStore,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 * 3 }
-}));
+// const sessionStore = new MongoStore({
+//     mongoUrl: process.env.DATABASE_URL,
+//     collection: 'sessions'  // the name of the collection for session storage
+// });
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: sessionStore,
+//     cookie: { maxAge: 1000 * 60 * 60 * 24 * 3 }
+// }));
 
 // routes (controllers)
 app.use('/', require('./routes/index'));
