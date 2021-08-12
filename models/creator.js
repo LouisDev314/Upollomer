@@ -18,7 +18,7 @@ const creatorSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
+    }
 })
 
 // name of the model in the db, schema correspond to that model

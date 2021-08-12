@@ -1,23 +1,23 @@
+const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+const Creator = require('./models/creator');
 
-async function initialize(passport, getUserByUsername) {
-    // username & password here are all sent through the form (submit data)
-    const authenticateUser = (username, password, done) => {
-        const user = getUserByUsername(username);
-        if (user == null) {
-            // done(error on server/ with application, user found)
+async function initialize(passport) {
+    const authenticateUser = async (username, password, done) => {
+        const user = await Creator.findOne({ username: username });
+        if (!user) {
+            // done(error in this operation, user found)
             return done(null, false, {
-                message: 'Wrong username or password'
+                message: 'Incorrect username or password'
             });
         }
         try {
             if (await bcrypt.compare(password, user.password)) {
                 return done(null, user);
             } else {
-                // if the password input didn't match
                 return done(null, false, {
-                    message: 'Wrong username or password'
+                    message: 'Incorrect username or password'
                 });
             }
         } catch (e) {
@@ -25,17 +25,25 @@ async function initialize(passport, getUserByUsername) {
             return done(e);
         }
     }
+    
     passport.use(new localStrategy({
         usernameField: 'username',
         passwordField: 'password'
     }), authenticateUser);
-
-    // serialize user to an session_id
+    
+    // serialize user to the session_id
     passport.serializeUser((user, done) => {
-
+        done(null, user.id);
     });
-    passport.deserializeUser((id, done) => {
-        
+    // find user in the db to grab it out from the server
+    passport.deserializeUser(async (userId, done) => {
+        try {
+            const user = await Creator.findById(userId);
+            done(null, user);
+        } catch (e) {
+            console.log('Deserialize user issue: ' + e.message);
+            return done(e);
+        }
     });
 }
 

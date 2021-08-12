@@ -17,8 +17,8 @@ router.post('/', async (req, res) => {
         res.redirect('/');
     }
     try {
-        const userExist = await Creator.findOne(req.body);
-        if (userExist) {
+        const creatorExist = await Creator.findOne(req.body.username);
+        if (creatorExist) {
             req.flash('error', 'Username already exists.');
             return res.redirect('/');
         }
@@ -29,10 +29,8 @@ router.post('/', async (req, res) => {
             password: hash
         });
         await newCreator.save();
-        
-        // req.session.creator = newCreator;
-        // req.flash('success', 'Registered profile successfully!');
-
+        req.session.creator = newCreator;
+        req.flash('success', 'Registered profile successfully!');
         res.redirect('/login');
     } catch (e) {
         console.log('Status 400: ' + e.message);

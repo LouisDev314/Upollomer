@@ -16,7 +16,25 @@ app.set('layout', 'layouts/layout'); // all HTML file will follow this customize
 app.use(expressLayouts); // allows to create a layout file for all of HTML
 app.use(express.static(__dirname + 'public'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // parse different requests types as req.body (form posting etc.) -> req.body.${name}
+app.use(express.urlencoded({ extended: true }));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.set('layout', 'layouts/layout');
+app.use(passport.initialize());  // refresh passport middleware every time
+app.use(passport.session());
+
+// FIXME: going to be replaced by JWT
+const sessionStore = new MongoStore({
+    mongoUrl: process.env.DATABASE_URL,
+    collection: 'sessions'  // the name of the collection for session storage
+});
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: sessionStore,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 3 }
+}));
 
 // routes (controllers)
 app.use('/', require('./routes/index'));
