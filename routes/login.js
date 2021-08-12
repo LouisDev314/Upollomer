@@ -4,7 +4,7 @@ const Creator = require('../models/creator');
 const flash = require('express-flash');
 const passport = require('passport');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 
 router.get('/', (req, res) => {
     res.render('login', { layout: false })
