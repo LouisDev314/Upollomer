@@ -10,6 +10,12 @@
         <section class="registerForm">
             <form action="/register" method="POST">
                 <fieldset>
+                    <% if (locals.message) { %>
+                        <div class="registerFlash">
+                            <%= message %>
+                        </div>
+                    <% } %>
+                    <br>
                     <div class="username">
                         <label for="username">Username</label>
                         <br>

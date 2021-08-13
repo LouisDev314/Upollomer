@@ -8,23 +8,15 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const expressLayouts = require('express-ejs-layouts');
-const passport = require('passport');
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
 
 // default view path
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.set('layout', 'layouts/layout'); // all HTML file will follow this customized HTML skeleton layout -> (default) views/layouts/layout.ejs
+app.set('layout', 'layouts/layout');
 app.use(expressLayouts); // allows to create a layout file for all of HTML
 app.use(express.static(__dirname + 'public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.set('layout', 'layouts/layout');
-app.use(passport.initialize());  // refresh passport middleware every time
-app.use(passport.session());
 
 // FIXME: going to be replaced by JWT
 // const sessionStore = new MongoStore({
