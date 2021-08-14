@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const Creator = require('../models/creator');
+const unauthenticated = require('../unauthenticated');
 
 var mismatch;
 var existed;
 
-router.get('/', (req, res) => {
+router.get('/', unauthenticated, (req, res) => {
     let string = 'init';
     if (mismatch) {
         string = 'mismatch_pw';
@@ -19,7 +20,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', unauthenticated, async (req, res) => {
     req.flash('init', '');
     mismatch = false;
     existed = false;

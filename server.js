@@ -35,7 +35,7 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }));
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session());  // make req.user always the user that is authenticated
 app.use(flash());
 
 // routes (controllers)
@@ -46,6 +46,7 @@ app.use('/creator/:username', require('./routes/creator'));
 app.use('/co-dreamers', require('./routes/co-dreamers'));
 app.use('/ideas', require('./routes/ideas'));
 app.use('/search', require('./routes/search'));
+app.use('/logout', require('./routes/logout'));
 
 // db connection
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });

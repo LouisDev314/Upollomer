@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const unauthenticated = require('../unauthenticated');
 
 const initializePassport = require('../passport-config');
 initializePassport(passport);
 
-router.get('/', (req, res) => {
+router.get('/', unauthenticated, (req, res) => {
     res.render('login', { layout: false });
 });
 
-router.post('/', passport.authenticate('local', {
+router.post('/', unauthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: 'login',
     failureFlash: true,

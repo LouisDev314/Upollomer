@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Idea = require('../models/idea');
+const authenticated = require('../authenticated');
 
 // All ideas route <- get req send through path query
 router.get('/', async (req, res) => {
@@ -43,7 +44,7 @@ router.get('/create', (req, res) => {
 
 // Implement new idea route <- the req.body here is the form post to this route
 // post req send through body
-router.post('/', async (req, res) => {
+router.post('/', authenticated, async (req, res) => {
     const idea = new Idea({
         // category: req.body.category,
         // genre: req.body.genre,
