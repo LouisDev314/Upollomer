@@ -9,6 +9,11 @@
         </header>
         <section class="loginForm">
             <fieldset>
+                <% if (messages.error) { %>
+                    <div class="loginFlash">
+                        <%= messages.error %>
+                    </div>
+                <% } %>
                 <br>
                 <form action="/login" method="POST">
                     <!-- Need to add email login too -->

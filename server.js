@@ -8,6 +8,10 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const expressLayouts = require('express-ejs-layouts');
+const session = require('express-session');
+const flash = require('express-flash');
+const MongoStore = require('connect-mongo');
+const passport = require('passport');
 
 // default view path
 app.set('views', __dirname + '/views');
@@ -19,17 +23,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // FIXME: going to be replaced by JWT
-// const sessionStore = new MongoStore({
-//     mongoUrl: process.env.DATABASE_URL,
-//     collection: 'sessions'  // the name of the collection for session storage
-// });
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     store: sessionStore,
-//     cookie: { maxAge: 1000 * 60 * 60 * 24 * 3 }
-// }));
+const sessionStore = new MongoStore({
+    mongoUrl: process.env.DATABASE_URL,
+    collection: 'sessions'  // the name of the collection for session storage
+});
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: sessionStore,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 // routes (controllers)
 app.use('/', require('./routes/index'));

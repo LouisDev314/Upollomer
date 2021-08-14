@@ -1,15 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const flash = require('express-flash');
 const bcrypt = require('bcrypt');
 const Creator = require('../models/creator');
-const session = require('express-session');
-router.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-}));
-router.use(flash());
 
 var mismatch;
 var existed;
