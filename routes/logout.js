@@ -5,7 +5,7 @@ router.use(methodOverride('_method'));
 
 // allows the delete method being override by form posting from log out button
 router.delete('/', (req, res) => {
-    req.logOut();
+    req.logOut();  // remove the user object from session.passport property
     res.redirect('/');
 });
 

@@ -1,6 +1,6 @@
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-const Creator = require('./models/creator');
+const Creator = require('../models/creator');
 
 function initialize(passport) {
     const authenticateUser = async (username, password, done) => {
@@ -26,12 +26,16 @@ function initialize(passport) {
         passwordField: 'password'
     }, authenticateUser));
     
-    // after authenticated = got user object -> serialize the information in the user object to session
+    // after authenticate(local) -> serialize to session for remembering -> choose info to save to session
+    // to lower the session space occupation -> retrieve the user id from the user object only
+    // import to the extra property 'passport' created in session
+    // passport: { user: 'the user id' }
+    // when need to be called: req.session.passport.user <- {id: '...'}
     passport.serializeUser((user, done) => {
         done(null, user._id);
     });
-    
-    // retrieve user information from db through the user id -> save to req.user
+
+    // retrieve user object from db through the user id -> save to req.user which is remembered for every further req
     passport.deserializeUser(async (id, done) => {
         try {
             const user = await Creator.findById(id);

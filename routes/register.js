@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const Creator = require('../models/creator');
-const unauthenticated = require('../unauthenticated');
+const unauthenticated = require('../passport/unauthenticated');
 
 var mismatch;
 var existed;

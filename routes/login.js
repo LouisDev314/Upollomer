@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const unauthenticated = require('../unauthenticated');
+const unauthenticated = require('../passport/unauthenticated');
 
-const initializePassport = require('../passport-config');
+const initializePassport = require('../passport/passport-config');
 initializePassport(passport);
 
 router.get('/', unauthenticated, (req, res) => {

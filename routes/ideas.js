@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Idea = require('../models/idea');
-const authenticated = require('../authenticated');
+const authenticated = require('../passport/authenticated');
 
 // All ideas route <- get req send through path query
 router.get('/', async (req, res) => {
@@ -34,7 +34,8 @@ router.get('/top', (req, res) => {
 });
 
 // Going to create a new idea project
-router.get('/create', (req, res) => {
+// TODO: add a promotion page to guide user to login page
+router.get('/create', authenticated, (req, res) => {
     res.render(
         'ideas/create',
         // create an idea object for manipulation in db
