@@ -34,8 +34,7 @@ app.use(session({
     store: sessionStore,
     cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }));
-// every req
-// check req.session.passport.user !== null <- if an user has logged in
+// check req.session.passport.user !== null for every req <- if an user has logged in
 // every if not null -> grab the user id -> deserializeUser to get the user object
 // so that req.user is enabled to use
 app.use(passport.initialize());
