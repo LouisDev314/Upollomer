@@ -10,7 +10,7 @@
                 <div><%= idea.description %></div>
                 <div><%= idea.date.toISOString().split('T')[0] %></div>
                 <% if (idea.logoPath) { %> 
-                    <img height="150" width="100" src="<% idea.logoPath %>">
+                    <img height="150" width="100" src="<%= idea.logoPath %>">
                 <% } %> 
                 <br>
             <% }) %>
