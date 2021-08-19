@@ -16,14 +16,15 @@
                 <br>
             <% }) %>
         </ul>
-        <p>Creators</p>
-        <ul>
-            <% creators.forEach(creator => { %>
-                <li class="searchedCreators">
-                    <%= creator.username %>
-                </li>
-            <% }) %>
-        </ul>
-        
+        <% if (searchCreators) { %> 
+            <p>Creators</p>
+            <ul>
+                <% creators.forEach(creator => { %>
+                    <li class="searchedCreators">
+                        <%= creator.username %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
     </body>
 </html>

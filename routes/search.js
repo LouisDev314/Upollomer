@@ -13,12 +13,17 @@ router.get('/', async (req, res) => {
         creatorSearchOptions.username = new RegExp(req.query.search, 'i', 'g');
     }
     try {
+        let searchCreators = true;
+        if (req.query.search == null || req.query.search === '') {
+            searchCreators = false;
+        }
         const ideas = await Idea.find(ideaSearchOptions);
         const creators = await Creator.find(creatorSearchOptions);
         res.render('search', {
             ideas: ideas,
             creators: creators,
-            searchOptions: req.query.search
+            searchOptions: req.query.search,
+            searchCreators: searchCreators
         });
     } catch (e) {
         console.log('Search Error: ' + e.message);

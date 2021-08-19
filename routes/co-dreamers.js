@@ -11,8 +11,11 @@ router.get('/', async (req, res) => {
 });
 
 // New creators
-router.get('/new', (req, res) => {
-    res.render('co-dreamers/new', { layout: 'layouts/co-dreamers' })
+router.get('/new', async (req, res) => {
+    res.render('co-dreamers/new', { 
+        layout: 'layouts/co-dreamers',
+        creators: await Creator.find().sort({ date: 'desc' }).limit(25).exec()
+    })
 });
 
 module.exports = router;
