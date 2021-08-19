@@ -1,45 +1,82 @@
-<!-- category icon -->
-<!-- how to export option value from here -->
-<div class="ideaTag">
-    <select name="category" id="category">
-        <option selected disabled hidden>Select a category ——</option>
-        <option value="game">Games</option>
-        <option value="film">Film</option>
-    </select>
-    &emsp;
-    <!-- dynamically shown -->
-    <select name="genre" id="genre">
-        <option selected disabled hidden>Select a genre ——</option>
-        <option value=""></option>
-    </select>
-</div>
-<br>
-<div class="ideaTitle">
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title" value="<%= idea.title %>">
-</div>
-<br>
-<div class="ideaDescription">
-    <label for="description">Description</label>
-    <input type="text" id="description" name="description" value="<%= idea.description %>">
-</div>
-<br>
-<div class="ideaRegion">
-    <label for="region">Region</label>
+<!-- TODO: category icon -->
+<!-- FIXME: export option value from here -->
+<fieldset>
+    <% if (locals.message) { %>
+        <div class="postIdeaFlash">
+            <%= message %> 
+        </div>
+    <% } %> 
     <br>
-    <select name="region" id="region">
-        <option value="" selected>Anywhere on Earth</option>
-        <!-- import all countries here -->
-    </select>
-</div>
-<br>
-<div class="ideaStatus">
-    <label for="status">Idea Status</label>
+    <div class="ideaTag">
+        <select name="category" id="category">
+            <option selected disabled hidden>Select a category ——</option>
+            <option value="<%= idea.category %>">Games</option>
+            <option value="film">Film</option>
+        </select>
+        &emsp;
+        <!-- FIXME: dynamically shown -->
+        <select name="genre" id="genre">
+            <option selected disabled hidden>Select a genre ——</option>
+            <option value="<%= idea.genre %>">RPG</option>
+        </select>
+    </div>
     <br>
-    <select name="status" id="status">
-        <option value="" selected>Initializing</option>
-        <option value="">In progress</option>
-        <option value="">Pre-launch</option>
-        <option value="">Post-launch</option>
-    </select>
-</div>
+    <div class="ideaTitle">
+        <label for="title">Title</label>
+        <br>
+        <input type="text" id="title" name="title" value="<%= idea.title %>" required>
+    </div>
+    <br>
+    <div class="ideaDescription">
+        <label for="description">Description</label>
+        <br>
+        <textarea style="resize:none" rows="8" cols="45" maxlength="300" id="description" name="description" value="<%= idea.description %>" required></textarea>
+    </div>
+    <br>
+    <div class="ideaRegion">
+        <label for="region">Region</label>
+        <br>
+        <select name="region" id="region">
+            <option value="<%= idea.region %>" selected>Anywhere on Earth</option>
+            <!-- FIXME: import all countries here -->
+        </select>
+    </div>
+    <br>
+    <div class="ideaStatus">
+        <label for="status">Idea Status</label>
+        <br>
+        <select name="status" id="status">
+            <option value="<%= idea.status %>" selected>Initializing</option>
+            <option value="">In progress</option>
+            <option value="">Pre-launch</option>
+            <option value="">Post-launch</option>
+        </select>
+    </div>
+    <br>
+    <div class="logo">
+        <label>Logo</label>
+        <br>
+        <input type="file" name="logo">
+    </div>
+    <br>
+    <div class="devLog">
+        <label for="devLog">Dev Log</label>
+        <br>
+        <input type="file" name="devLog">
+    </div>
+    <br>
+    <div class="co-dreamers">
+        <label for="co-dreamers">Co-Dreamers (temp)</label>
+        <br>
+        <!-- TODO: put this function w/ friend list or user page -->
+        <!-- TODO: add co-dreamers with a tag system -->
+        <select name="coDreamer">
+            <% if (locals.creators) { %>
+                <% creators.forEach(creator => { %>
+                    <option label="<%= creator.username %>" value="<%= creator.id %>"></option>
+                <% }) %>
+            <% } %>
+        </select>
+    </div>
+    <br>
+</fieldset>

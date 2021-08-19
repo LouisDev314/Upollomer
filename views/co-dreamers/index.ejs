@@ -5,5 +5,9 @@
     </head>
     <body>
         <h2>We are dreamers and creators (all creators)</h2>
+        <% creators.forEach(creator => { %> 
+            <%= creator.username %>
+            <br>
+        <% }) %>
     </body>
 </html>

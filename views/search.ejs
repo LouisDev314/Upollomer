@@ -1,13 +1,29 @@
 <html>
     <head>
-        <title>Search result for <%= searchOptions.search %> —— Upollomer</title>
+        <title>Search result for <%= searchOptions %> —— Upollomer</title>
     </head>
     <body>
-        <h3>Dynamically display content here</h3>
-        <% ideas.forEach(idea => { %>
-            <div><%= idea.title %></div>
-            <div><%= idea.description %></div>
-            <br>
-        <% }) %>
+        <h3>Dynamically display search content here</h3>
+        <p>Ideas</p>
+        <ul>
+            <% ideas.forEach(idea => { %>
+                <li class="searchedIdeas">
+                    <%= idea.title %>
+                    <br>
+                    <%= idea.description %>
+                    <div>Created date: <%= idea.date.toISOString().split('T')[0] %></div>
+                </li>
+                <br>
+            <% }) %>
+        </ul>
+        <p>Creators</p>
+        <ul>
+            <% creators.forEach(creator => { %>
+                <li class="searchedCreators">
+                    <%= creator.username %>
+                </li>
+            <% }) %>
+        </ul>
+        
     </body>
 </html>

@@ -22,7 +22,7 @@ app.use(express.static(__dirname + 'public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// FIXME: going to be replaced by JWT
+// TODO: replace by JWT
 const sessionStore = new MongoStore({
     mongoUrl: process.env.DATABASE_URL,
     collection: 'sessions'  // the name of the collection for session storage

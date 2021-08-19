@@ -4,36 +4,23 @@ const bcrypt = require('bcrypt');
 const Creator = require('../models/creator');
 const unauthenticated = require('../passport/unauthenticated');
 
-var mismatch;
-var existed;
-
 router.get('/', unauthenticated, (req, res) => {
-    let string = 'init';
-    if (mismatch) {
-        string = 'mismatch_pw';
-    } else if (existed) {
-        string = 'user_existed';
-    }
     res.render('register', {
         layout: false,
-        message: req.flash(string)
+        message: req.flash('registration_err')
     });
 });
 
 router.post('/', unauthenticated, async (req, res) => {
-    req.flash('init', '');
-    mismatch = false;
-    existed = false;
+    req.flash('registration_err', '');
     if (req.body.password !== req.body.r_password) {
-        req.flash('mismatch_pw', 'Mismatched password. Please enter the same password twice.');
-        mismatch = true;
+        req.flash('registration_err', 'Mismatched password. Please enter the same password twice.');
         return res.redirect('/register');
     }
     try {
         const creatorExist = await Creator.findOne({ username: req.body.username });
         if (creatorExist) {
-            req.flash('user_existed', 'Username already exists.');
-            existed = true;
+            req.flash('registration_err', 'Username already exists.');
             return res.redirect('/register');
         }
         const hash = await bcrypt.hash(req.body.password, 10);

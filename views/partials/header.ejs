@@ -17,11 +17,13 @@
                 <li>Forums</li>
                 <strong><li><a href="../ideas/create">Eureka! (Start your Idea!)</a></li></strong>
                 <li>
-                    <form action="search" method="GET" >
+                    <!-- when submit value through get -> req.query -->
+                    <form action="/search" method="GET" >
                         <% if (locals.searchOptions) { %> 
-                            <input type="text" name="search" value="<%= searchOptions.search %>">
+                            <!-- TODO: adjust the input box size -->
+                            <input type="text" name="search" value="<%= searchOptions %>" size="18">
                         <% } else { %>
-                            <input type="text" name="search" placeholder="Search">
+                            <input type="text" name="search" placeholder="Search for ideas or creators">
                         <% } %>
                         <button type="submit">&#128269;</button>
                     </form>

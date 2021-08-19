@@ -13,7 +13,7 @@ router.get('/', unauthenticated, (req, res) => {
 router.post('/', unauthenticated, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: 'login',
-    failureFlash: true,
+    failureFlash: true
 }));
 
 module.exports = router;

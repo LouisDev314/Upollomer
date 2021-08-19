@@ -16,9 +16,9 @@ This is the init version of Upollomer, basic framework
 
 1. Login & Register
 
-   a. allow Google/ Facebook strategy apart from local strategy
+   a. choose region of identity
 
-   b. choose region of identity
+   <u>***b. change to auth_layouts after logged in***</u>
 
 2. Authentication to allow create project
 
@@ -38,21 +38,35 @@ This is the init version of Upollomer, basic framework
 
 5. **Get value from selection box -> import to Schema**
 
-6. Add a Map selection box pair for project creation & project browse
+6. **The idea created can be checked from My Idea page**
 
-7. Invite co-dreamer to an Idea
+7. Add a Map selection box pair for project creation & project browse
 
-8. Send request to join an Idea
+8. Invite co-dreamer to an Idea
+
+9. Send request to join an Idea
 
    Provide text-space to write anything want to introduce
 
-9. Instant chat system
+10. Instant chat system
 
-10. Development Tips page
+11. Development Tips page
 
-11. Crowd funding function
+12. Crowd funding function
 
-12. Online store (?)
+13. Online store (?)
+
+14. **<u>Project Co-Dreamer Tag system:</u>**
+
+    1. find a suitable co-dreamer on the co-dream page
+    2. start *online chat* with the co-dreamer <- can form a group or similar stuff etc.
+    3. mutual agreement
+    4. send invitation to the co-dreamer [project-based authorization link]
+    5. the co-dreamer accept the invitation
+    6. the platform automatically tag the co-dreamer to the project
+    7. people can review the creators of that project through tags
+
+15. Get name of the file through the file created on the file system, then save the name to the idea schema <- library: multer (for multi-part forms)
 
 **<u>Verification & Security</u>**
 

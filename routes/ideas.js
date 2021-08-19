@@ -1,70 +1,123 @@
 const express = require('express');
 const router = express.Router();
 const Idea = require('../models/idea');
+const path = require('path');  // node.js core module
+const fs = require('fs');
+const logoUploadPath = path.join('public', Idea.logoBasePath);
+const devLogUploadPath = path.join('public', Idea.devLogBasePath);
+const Creator = require('../models/creator');
 const authenticated = require('../passport/authenticated');
+const multer = require('multer');
+const logoMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+const devLogMimeTypes = ['text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf'];
+const upload = multer({
+    dest: (req, file, cb) => {
+        if (file.fieldname === 'logo') {
+            cb(null, logoUploadPath);
+        } else {
+            cb(null, devLogUploadPath);
+        }
+    },
+    fileFilter: (req, file, cb) => {
+        if (file.fieldname === 'logo') {
+            cb(null, logoMimeTypes.includes(file.mimetype));
+        } else {
+            cb(null, devLogMimeTypes.includes(file.mimetype));
+        }
+    }
+});
 
 // All ideas route <- get req send through path query
 router.get('/', async (req, res) => {
     try {
-        const ideas = await Idea.find();
         res.render('ideas/index', {
             route: req.originalUrl,
             layout: 'layouts/ideas',
-            ideas: ideas
+            ideas: await Idea.find()
         });
     } catch {
         res.redirect('/');
     }
 });
 
-// New idea route
-router.get('/new', (req, res) => {
-    res.render('ideas/new', {
-        route: req.originalUrl,  // this is for selection box selected dynamically
-        layout: 'layouts/ideas'
-    });
+router.get('/new', async (req, res) => {
+    try {
+        res.render('ideas/new', {
+            route: req.originalUrl,
+            layout: 'layouts/ideas',
+            ideas: await Idea.find().sort({ date: 'desc' }).limit(25).exec()
+        });
+    } catch (e) {
+        console.log(e.message);
+        res.redirect('/');
+    }
 });
 
-// Top idea route
-router.get('/top', (req, res) => {
-    res.render('ideas/top', {
-        route: req.originalUrl,
-        layout: 'layouts/ideas'
-    });
+router.get('/top', async (req, res) => {
+    try {
+        res.render('ideas/top', {
+            route: req.originalUrl,
+            layout: 'layouts/ideas',
+            ideas: await Idea.find()
+        });
+    } catch (e) {
+        console.log(e.message);
+        res.redirect('/');
+    }
 });
 
-// Going to create a new idea project
 // TODO: add a promotion page to guide user to login page
-router.get('/create', authenticated, (req, res) => {
-    res.render(
-        'ideas/create',
-        // create an idea object for manipulation in db
-        { idea: new Idea() }
-    );
+router.get('/create', authenticated, async (req, res) => {
+    try {
+        res.render('ideas/create', {
+            // Create an Idea object for creation (adding properties to it)
+            idea: new Idea(),
+            // TODO: friend list function?
+            creators: await Creator.find(),
+            message: req.flash('postIdeaErr')
+        });
+    } catch (e) {
+        console.log('create idea error: ' + e.message);
+        res.redirect('ideas');
+    }
 });
 
-// Implement new idea route <- the req.body here is the form post to this route
-// post req send through body
-router.post('/', authenticated, async (req, res) => {
+// req.body here is the form that post to this route
+router.post('/', upload.fields([{ name: 'logo', maxCount: 1 }, { name: 'devLog', maxCount: 1 }]), async (req, res) => {
+    const logoFileName = req.files['logo'] ? req.files['logo'][0].filename : null;
+    const devLogFileName = req.files['devLog'] ? req.files['devLog'][0].filename : null;
     const idea = new Idea({
-        // category: req.body.category,
-        // genre: req.body.genre,
+        // TODO: get value from select option
+        category: req.body.category,
+        genre: req.body.genre,
         title: req.body.title,
         description: req.body.description,
-        // region: req.body.region,
-        // status: req.body.status
+        // TODO: import all countries in the world
+        region: req.body.region,
+        status: req.body.status,
+        logoName: logoFileName,
+        devLogName: devLogFileName,
+        coDreamer: req.body.coDreamer    
     });
+    
     try {
         const newIdea = await idea.save();
-        // element on the page changes -> use redirect \else use render
         // res.redirect(`ideas/${newIdea.id}`)
         res.redirect('ideas');
     } catch (e) {
-        console.log(e.message);
-        res.render('ideas/create', {
-            idea: idea,
-            errorMessage: 'Cannot implement this idea'
-        });
+        console.log('idea post error: ' + e.message);
+        req.flash('postIdeaErr', 'Cannot implement this idea.');
+        if (idea.logoName != null) {
+            fs.unlink(path.join(logoUploadPath, idea.logoName), (err) => {
+                if (err) console.error(err);
+            });
+        }
+        if (idea.devLogName) {
+            fs.unlink(path.join(devLogUploadPath, idea.devLogName), (err) => {
+                if (err) console.error(err);
+            });
+        }
+        res.redirect('ideas/create');
     }
 });
 

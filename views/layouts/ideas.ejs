@@ -30,6 +30,7 @@
                 &emsp;
                 <label for="sort">Sort by</label>
                 <select name="sort" id="sort" onchange="location=this.value;">
+                    <!-- FIXME: show dynamically -->
                     <% if (route === '/ideas') { %>
                         <option selected>Hit</option>
                         <option value="../ideas/new">New</option>
@@ -50,6 +51,6 @@
     </body>
     <hr>
     <footer>
-
+        <%- include('../partials/footer') %>
     </footer>
 </html>

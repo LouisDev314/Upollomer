@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
+const path = require('path');
+
+const logoBasePath = 'uploads/ideaLogos';
+const devLogBasePath = 'uploads/ideaDevLogs';
 
 const ideaSchema = new mongoose.Schema({
     date: {
         type: Date,
+        required: true,
         default: Date.now()
     },
     category: {
@@ -18,8 +23,7 @@ const ideaSchema = new mongoose.Schema({
         required: true
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     region: {
         type: String,
@@ -30,7 +34,7 @@ const ideaSchema = new mongoose.Schema({
         required: true
     },
     // files will be stored in file system
-    coverImageName: {
+    logoName: {
         type: String
     },
     devLogName: {
@@ -38,8 +42,18 @@ const ideaSchema = new mongoose.Schema({
     },
     coDreamer: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'  // this is the module exports from user model
+        ref: 'Creator'
+    }
+});
+
+// create a virtual property
+ideaSchema.virtual('logoPath').get(function() {
+    // the actual function here is to allow the 'this' reference for the actual idea object that called this property
+    if (this.logoName) {
+        return path.join('/', logoBasePath, this.logoName);
     }
 });
 
 module.exports = mongoose.model('Idea', ideaSchema);
+module.exports.logoBasePath = logoBasePath;
+module.exports.devLogBasePath = devLogBasePath;

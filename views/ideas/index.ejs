@@ -3,11 +3,17 @@
         <title>Hit Ideas —— Upollomer</title>
     </head>
     <body>
-        <h2>This is the Hit Idea page</h2>
-        <% ideas.forEach(idea => { %>
-            <div><%= idea.title %></div>
-            <div><%= idea.description %></div>
-            <br>
-        <% }) %>
+        <h2>This is the Hit (index) Idea page</h2>
+        <div>
+            <% ideas.forEach(idea => { %>
+                <div><%= idea.title %></div>
+                <div><%= idea.description %></div>
+                <div><%= idea.date.toISOString().split('T')[0] %></div>
+                <% if (idea.logoPath) { %> 
+                    <img height="150" width="100" src="<% idea.logoPath %>">
+                <% } %> 
+                <br>
+            <% }) %>
+        </div>
     </body>
 </html>
