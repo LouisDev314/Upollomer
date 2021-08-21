@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const path = require('path');
 
-const logoBasePath = 'uploads/ideaLogos';
+const coverImgBasePath = 'uploads/ideaCoverImages';
 const devLogBasePath = 'uploads/ideaDevLogs';
 
 const ideaSchema = new mongoose.Schema({
@@ -34,7 +34,7 @@ const ideaSchema = new mongoose.Schema({
         required: true
     },
     // files will be stored in file system
-    logoName: {
+    coverImgName: {
         type: String
     },
     devLogName: {
@@ -47,13 +47,13 @@ const ideaSchema = new mongoose.Schema({
 });
 
 // create a virtual property
-ideaSchema.virtual('logoPath').get(function() {
+ideaSchema.virtual('coverImgPath').get(function() {
     // the actual function here is to allow the 'this' reference for the actual idea object that called this property
-    if (this.logoName) {
-        return path.join('/', logoBasePath, this.logoName);
+    if (this.coverImgName) {
+        return path.join('/', coverImgBasePath, this.coverImgName);
     }
 });
 
 module.exports = mongoose.model('Idea', ideaSchema);
-module.exports.logoBasePath = logoBasePath;
+module.exports.coverImgBasePath = coverImgBasePath;
 module.exports.devLogBasePath = devLogBasePath;

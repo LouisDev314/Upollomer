@@ -12,13 +12,16 @@ const session = require('express-session');
 const flash = require('express-flash');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
+const path = require('path');
 
 // default view path
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts); // allows to create a layout file for all of HTML
-app.use(express.static(__dirname + 'public'));
+// app.use(express.static(__dirname + 'public'));
+app.use('*/javascripts', express.static(path.join(__dirname, 'public/javascripts')));
+app.use('*/styles', express.static(path.join(__dirname, 'public/styles')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

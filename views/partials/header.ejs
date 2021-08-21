@@ -1,42 +1,40 @@
-<header>
-    <div class="languageSelector">
-        <label for="languages">Languages&#127760;</label>
-        <select name="languages" id="languages">
-            <option value="english">English</option>
-            <option value="t_chinese">Traditional Chinese</option>
-        </select>
-    </div>
-    <nav class="header">
-        <!-- The title comes with icon -->
-        <h1 class="webTitle">Upollomer</h1>
-        <nav class="headerNav">
-            <ul>
-                <li><a href="../ideas">Ideas</a></li>
-                <li><a href="../co-dreamers">Co-Dreamers (supplier, customers)</a></li>
-                <li>Incubators</li>
-                <li>Forums</li>
-                <strong><li><a href="../ideas/create">Eureka! (Start your Idea!)</a></li></strong>
-                <li>
-                    <!-- when submit value through get -> req.query -->
-                    <form action="/search" method="GET" >
-                        <% if (locals.searchOptions) { %> 
-                            <!-- TODO: adjust the input box size -->
-                            <input type="text" name="search" value="<%= searchOptions %>" size="18">
-                        <% } else { %>
-                            <input type="text" name="search" placeholder="Search for ideas or creators">
-                        <% } %>
-                        <button type="submit">&#128269;</button>
-                    </form>
-                </li>
-                <!-- TODO: change to user after authenticated -->
-                <li><a href="../login">Log in</a></li>
-                <li><a href="../register">Register</a></li>
-                <div class="logoutBtn">
-                    <form action="/logout?_method=DELETE" method="POST">
-                        <button type="submit">Log out</button>
-                    </form>
-                </div>
-            </ul>
-        </nav>
+<div class="languageSelector">
+    <label for="languages">Languages&#127760;</label>
+    <select name="languages" id="languages">
+        <option value="english">English</option>
+        <option value="t_chinese">Traditional Chinese</option>
+    </select>
+</div>
+<nav class="header">
+    <!-- The title comes with icon -->
+    <h1 class="webTitle">Upollomer</h1>
+    <nav class="headerNav">
+        <ul>
+            <li><a href="../ideas">Ideas</a></li>
+            <li><a href="../co-dreamers">Co-Dreamers (supplier, customers)</a></li>
+            <li>Incubators</li>
+            <li>Forums</li>
+            <strong><li><a href="../ideas/create">Eureka! (Start your Idea!)</a></li></strong>
+            <li>
+                <!-- when submit value through get -> req.query -->
+                <form action="/search" method="GET" >
+                    <% if (locals.searchOptions) { %> 
+                        <!-- TODO: adjust the input box size -->
+                        <input type="text" name="search" value="<%= searchOptions %>" size="18">
+                    <% } else { %>
+                        <input type="text" name="search" placeholder="Search for ideas or creators">
+                    <% } %>
+                    <button type="submit">&#128269;</button>
+                </form>
+            </li>
+            <!-- TODO: change to user after authenticated -->
+            <li><a href="../login">Log in</a></li>
+            <li><a href="../register">Register</a></li>
+            <div class="logoutBtn">
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button type="submit">Log out</button>
+                </form>
+            </div>
+        </ul>
     </nav>
-</header>
+</nav>
