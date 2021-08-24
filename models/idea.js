@@ -1,8 +1,4 @@
 const mongoose = require('mongoose');
-const path = require('path');
-
-const coverImgBasePath = 'uploads/ideaCoverImages';
-const devLogBasePath = 'uploads/ideaDevLogs';
 
 const ideaSchema = new mongoose.Schema({
     date: {
@@ -12,11 +8,11 @@ const ideaSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        required: true
+        // required: true
     },
     genre: {
         type: String,
-        required: true
+        // required: true
     },
     title: {
         type: String,
@@ -27,17 +23,24 @@ const ideaSchema = new mongoose.Schema({
     },
     region: {
         type: String,
-        required: true
+        // required: true
     },
     status: {
         type: String,
-        required: true
+        // required: true
     },
     // files will be stored in file system
-    coverImgName: {
+    coverImg: {
+        // buffer of the data representing entire image (the base 64 code)
+        type: Buffer
+    },
+    coverImgType: {
         type: String
     },
-    devLogName: {
+    devLog: {
+        type: Buffer
+    },
+    devLogType: {
         type: String
     },
     coDreamer: {
@@ -49,11 +52,17 @@ const ideaSchema = new mongoose.Schema({
 // create a virtual property
 ideaSchema.virtual('coverImgPath').get(function() {
     // the actual function here is to allow the 'this' reference for the actual idea object that called this property
-    if (this.coverImgName) {
-        return path.join('/', coverImgBasePath, this.coverImgName);
+    if (this.coverImg && this.coverImgType) {
+        // data object in HTML -> take buffer data and type to display image through encoded string
+        return `data:${this.coverImgType};charset=utf-8;base64,${this.coverImg.toString('base64')}`;
     }
 });
 
+// ideaSchema.virtual('devLogPath').get(function() {
+//     // the actual function here is to allow the 'this' reference for the actual idea object that called this property
+//     if (this.devLog && this.devLogType) {
+//         return `data:${this.devLogType};charset=utf-8;base-64,${this.devLog.toString('base64')}`;
+//     }
+// });
+
 module.exports = mongoose.model('Idea', ideaSchema);
-module.exports.coverImgBasePath = coverImgBasePath;
-module.exports.devLogBasePath = devLogBasePath;

@@ -1,6 +1,6 @@
 # Upollomer
 
-Nurture entrepreneurship
+Nurture entrepreneurship in community
 
 ------
 
@@ -10,7 +10,21 @@ This is the init version of Upollomer, basic framework
 
 **<u>Aim</u>**
 
-- 
+- Connect Community to do innovation
+
+- Apply the concept of blockchain, let people who have specialized skills to create value by joining each other's developing idea. Instead of rushing to big companies, people themselves can form technical blockchain which connects people and create value together depending on each other but not highly centralized social development direction or corporations. 
+
+- 非工作招聘性質 <- 共同創造新項目為首要目的（故目標群體為應屆畢業生、大學生、高中生等無太大經濟壓力的群體）
+
+  自主選擇去產生價值，並非以錢作為首要衡量，以創意、個人獨特能力等去發揮價值同時創造
+
+  非人才網形式的單向招聘，而是雙向的選擇加入以及尋找合適的人
+
+  項目方面：利用熱誠和創意去吸引人而非金錢
+
+  創作者方面：可依照自己的需求，想做的項目內容，興趣等作為出發點去尋找項目加入
+
+  非被動等人尋找，而是主動去發掘自己的價值
 
 **<u>Task</u>**
 
@@ -67,6 +81,10 @@ This is the init version of Upollomer, basic framework
     7. people can review the creators of that project through tags
 
 15. Get name of the file through the file created on the file system, then save the name to the idea schema <- library: multer (for multi-part forms)
+
+16. add creators to a [list]
+
+17. On the idea page, instead of showing the ideas money raising percentage, shows the idea status and letting people to join by promoting the promise of the idea
 
 **<u>Verification & Security</u>**
 

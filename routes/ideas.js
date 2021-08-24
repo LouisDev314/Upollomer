@@ -1,36 +1,32 @@
 const express = require('express');
 const router = express.Router();
 const Idea = require('../models/idea');
-const path = require('path');  // node.js core module
-const fs = require('fs');
-const coverImgUploadPath = path.join('public', Idea.coverImgBasePath);
-const devLogUploadPath = path.join('public', Idea.devLogBasePath);
 const Creator = require('../models/creator');
 const authenticated = require('../passport/authenticated');
-const multer = require('multer');
 const coverImgMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 const devLogMimeTypes = ['text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf'];
-const upload = multer({
-    dest: (req, file, cb) => {
-        if (file.fieldname === 'coverImg') {
-            cb(null, coverImgUploadPath);
-        } else {
-            cb(null, devLogUploadPath);
-        }
-    },
-    fileFilter: (req, file, cb) => {
-        if (file.fieldname === 'coverImg') {
-            cb(null, coverImgMimeTypes.includes(file.mimetype));
-        } else {
-            cb(null, devLogMimeTypes.includes(file.mimetype));
-        }
-    }
-});
+// const upload = multer({
+//     dest: (req, file, cb) => {
+//         if (file.fieldname === 'coverImg') {
+//             cb(null, coverImgUploadPath);
+//         } else {
+//             cb(null, devLogUploadPath);
+//         }
+//     },
+//     fileFilter: (req, file, cb) => {
+//         if (file.fieldname === 'coverImg') {
+//             cb(null, coverImgMimeTypes.includes(file.mimetype));
+//         } else {
+//             cb(null, devLogMimeTypes.includes(file.mimetype));
+//         }
+//     }
+// });
 
 // All ideas route <- get req send through path query
 router.get('/', async (req, res) => {
     try {
         res.render('ideas/index', {
+            // FIXME: use req.params instead
             route: req.originalUrl,
             layout: 'layouts/ideas',
             ideas: await Idea.find()
@@ -82,10 +78,32 @@ router.get('/create', authenticated, async (req, res) => {
     }
 });
 
-// req.body here is the form that post to this route
-router.post('/', upload.fields([{ name: 'coverImg', maxCount: 1 }, { name: 'devLog', maxCount: 1 }]), async (req, res) => {
-    const coverImgFileName = req.files['coverImg'] ? req.files['coverImg'][0].filename : null;
-    const devLogFileName = req.files['devLog'] ? req.files['devLog'][0].filename : null;
+// directly save file inside the idea with Buffer
+// FIXME: image transform
+function saveIdeaFiles(idea, coverImgEncoded, devLogEncoded) {
+    if (!coverImgEncoded && !devLogEncoded) {
+        return;
+    }
+    let coverImg;
+    let devLog;
+    // to parse the base 64 encoded JSON string from filepond to a JS understandable JSON object
+    if (coverImgEncoded) {
+        coverImg = JSON.parse(coverImgEncoded);
+    }
+    if (devLogEncoded) {
+        devLog = JSON.parse(devLogEncoded);
+    }
+    if (coverImg && coverImgMimeTypes.includes(coverImg.type)) {
+        // convert to buffer from base64 encoded JSON object property
+        idea.coverImg = new Buffer.from(coverImg.data, 'base64');
+        idea.coverImgType = coverImg.type;
+    }
+    if (devLog && devLogMimeTypes.includes(devLog.type)) {
+        idea.devLog = new Buffer.from(devLog.data, 'base64');
+        idea.devLogType = devLog.type;
+    }
+}
+router.post('/', async (req, res) => {
     const idea = new Idea({
         // FIXME: get value from select option
         category: req.body.category,
@@ -95,28 +113,17 @@ router.post('/', upload.fields([{ name: 'coverImg', maxCount: 1 }, { name: 'devL
         // FIXME: import all countries in the world
         region: req.body.region,
         status: req.body.status,
-        coverImgName: coverImgFileName,
-        devLogName: devLogFileName,
         coDreamer: req.body.coDreamer    
     });
-    
+
     try {
+        saveIdeaFiles(idea, req.body.coverImg, req.body.devLog);
         const newIdea = await idea.save();
         // res.redirect(`ideas/${newIdea.id}`)
         res.redirect('ideas');
     } catch (e) {
         console.log('idea post error: ' + e.message);
         req.flash('postIdeaErr', 'Cannot implement this idea.');
-        if (idea.coverImgName != null) {
-            fs.unlink(path.join(coverImgUploadPath, idea.coverImgName), (err) => {
-                if (err) console.error(err);
-            });
-        }
-        if (idea.devLogName) {
-            fs.unlink(path.join(devLogUploadPath, idea.devLogName), (err) => {
-                if (err) console.error(err);
-            });
-        }
         res.redirect('ideas/create');
     }
 });

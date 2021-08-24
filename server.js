@@ -50,6 +50,7 @@ app.use('/login', require('./routes/login'));
 app.use('/register', require('./routes/register'));
 app.use('/creator/:username', require('./routes/creator'));
 app.use('/co-dreamers', require('./routes/co-dreamers'));
+// FIXME: add params
 app.use('/ideas', require('./routes/ideas'));
 app.use('/search', require('./routes/search'));
 app.use('/logout', require('./routes/logout'));

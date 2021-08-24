@@ -12,7 +12,6 @@ router.get('/', unauthenticated, (req, res) => {
 });
 
 router.post('/', unauthenticated, async (req, res) => {
-    req.flash('registration_err', '');
     if (req.body.password !== req.body.r_password) {
         req.flash('registration_err', 'Mismatched password. Please enter the same password twice.');
         return res.redirect('/register');
