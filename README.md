@@ -12,7 +12,7 @@ This is the init version of Upollomer, basic framework
 
 - Connect Community to do innovation
 
-- Apply the concept of blockchain, let people who have specialized skills to create value by joining each other's developing idea. Instead of rushing to big companies, people themselves can form technical blockchain which connects people and create value together depending on each other but not highly centralized social development direction or corporations. 
+- Apply the concept of blockchain, let people who have specialized skills to create value by joining each other's developing idea. Instead of rushing to big companies, people themselves can form technical blockchain which connects people and create value together depending on each other but not highly centralized social development direction or corporations
 
 - 非工作招聘性質 <- 共同創造新項目為首要目的（故目標群體為應屆畢業生、大學生、高中生等無太大經濟壓力的群體）
 
@@ -25,6 +25,12 @@ This is the init version of Upollomer, basic framework
   創作者方面：可依照自己的需求，想做的項目內容，興趣等作為出發點去尋找項目加入
 
   非被動等人尋找，而是主動去發掘自己的價值
+  
+- a site for problem solving ideas (i.e. 空氣污染問題，油污問題)
+
+- When the age of AI and autonomy has come (prepare us for post-autonomy era), people and the society structure will change to creation-oriented development path. When most of the repetitive labor forces are being freed, humans can start playing the strongest and most unique of mankind, creativity
+
+- Also, to prevent the high-dependency on big corporates to wait for them to tell us what our future should have or should be, we, the elements of the society, the community that is closest to understand what each other actually need can also contribute to a better future that fits our needs more -> avoid highly centralized dependencies, build the future of community (as mankind) together and allow each of us to contribute (blockchain)
 
 **<u>Task</u>**
 
@@ -85,6 +91,11 @@ This is the init version of Upollomer, basic framework
 16. add creators to a [list]
 
 17. On the idea page, instead of showing the ideas money raising percentage, shows the idea status and letting people to join by promoting the promise of the idea
+
+18. **Status:**
+
+    - actively recruiting
+    - allows to control open/close the request function
 
 **<u>Verification & Security</u>**
 

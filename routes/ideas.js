@@ -5,22 +5,8 @@ const Creator = require('../models/creator');
 const authenticated = require('../passport/authenticated');
 const coverImgMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 const devLogMimeTypes = ['text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf'];
-// const upload = multer({
-//     dest: (req, file, cb) => {
-//         if (file.fieldname === 'coverImg') {
-//             cb(null, coverImgUploadPath);
-//         } else {
-//             cb(null, devLogUploadPath);
-//         }
-//     },
-//     fileFilter: (req, file, cb) => {
-//         if (file.fieldname === 'coverImg') {
-//             cb(null, coverImgMimeTypes.includes(file.mimetype));
-//         } else {
-//             cb(null, devLogMimeTypes.includes(file.mimetype));
-//         }
-//     }
-// });
+
+// <div><%= idea.date.toISOString().split('T')[0] %></div>
 
 // All ideas route <- get req send through path query
 router.get('/', async (req, res) => {

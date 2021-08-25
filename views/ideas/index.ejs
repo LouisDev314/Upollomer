@@ -11,7 +11,8 @@
                 <% } %> 
                 <div><%= idea.title %></div>
                 <div><%= idea.description %></div>
-                <div><%= idea.date.toISOString().split('T')[0] %></div>
+                <!-- FIXME: show coDreamers base on recruiting -->
+                <div>Creators: <%= idea.coDreamer %> </div>
                 <br>
             <% }) %>
             <!-- FIXME: preview devLogs -->
