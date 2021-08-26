@@ -8,29 +8,34 @@ Nurture entrepreneurship in community
 
 This is the init version of Upollomer, basic framework
 
+P2P, C2B, B2C, C2C
+
 **<u>Aim</u>**
 
 - Connect Community to do innovation
-
 - Apply the concept of blockchain, let people who have specialized skills to create value by joining each other's developing idea. Instead of rushing to big companies, people themselves can form technical blockchain which connects people and create value together depending on each other but not highly centralized social development direction or corporations
-
-- 非工作招聘性質 <- 共同創造新項目為首要目的（故目標群體為應屆畢業生、大學生、高中生等無太大經濟壓力的群體）
-
-  自主選擇去產生價值，並非以錢作為首要衡量，以創意、個人獨特能力等去發揮價值同時創造
-
-  非人才網形式的單向招聘，而是雙向的選擇加入以及尋找合適的人
-
-  項目方面：利用熱誠和創意去吸引人而非金錢
-
-  創作者方面：可依照自己的需求，想做的項目內容，興趣等作為出發點去尋找項目加入
-
-  非被動等人尋找，而是主動去發掘自己的價值
-  
+- Main differences:
+  - LinkedIn -> different target users & different purpose (LinkedIn is more like job and career environment but Upollomer for raw and no background students to create things freely without considering about financial issue)
+  - not job recruiting principle but to create new ideas to server common goods
+  - 非工作招聘性質 <- 共同創造新項目為首要目的（故目標群體為應屆畢業生、大學生、高中生等無太大經濟壓力的群體
+  - 非被動等人尋找，非以錢作為首要衡量，而是主動去發掘自己的價值
+  - 非人才網形式的單對單，單向招聘，而是雙向的選擇加入以及尋找合適的人
+  - 以創意、個人獨特能力等去發揮價值同時創造未來
+  - 項目方面：利用熱誠和創意去吸引人而非金錢
+  - 創作者方面：可依照自己的需求，想做的項目內容，興趣等作為出發點去尋找項目加入
+  - 
 - a site for problem solving ideas (i.e. 空氣污染問題，油污問題)
-
 - When the age of AI and autonomy has come (prepare us for post-autonomy era), people and the society structure will change to creation-oriented development path. When most of the repetitive labor forces are being freed, humans can start playing the strongest and most unique of mankind, creativity
-
 - Also, to prevent the high-dependency on big corporates to wait for them to tell us what our future should have or should be, we, the elements of the society, the community that is closest to understand what each other actually need can also contribute to a better future that fits our needs more -> avoid highly centralized dependencies, build the future of community (as mankind) together and allow each of us to contribute (blockchain)
+- Target user niche:
+  - the efficiency of networking right now is too slow, which leads to the delay in implementation of innovative and creative ideas
+  - provide a background-freed platform for students to do networking to connect with each other (minimum background required, such as university)
+  - to solve the problem that most of the students today are perplexed about their future, if their major can get them a job, or lack of experiences and projects to get themselves into companies in the future
+  - help them to be able to form a creative projects which allows them to exert their creativity
+  - Upollomer provides idea-based connection around the world, user can find the idea that they are interested and find their ability is suitable and applicable; while creators are able to seek for the people who have the technical ability that they need for their idea implementation
+  - university, high school, college students, to let them know that their ability and creativity are required and able to change even just a bit of the world, to let them feel less confused
+  - to connect the technical ability of every student in this world, to let them collaborate without country boundaries (by the mature network communication tool development today)
+  - to raise the creativity and productivity of society
 
 **<u>Task</u>**
 

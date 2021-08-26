@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <%- include('../partials/metaHead') %>
     </head>
@@ -9,44 +9,7 @@
     </header>
     <hr>
     <body>
-        <nav class="bodyNav">
-            <ul>
-                <!-- Need to be dynamic based on the ejs file -->
-                <label for="category">Category</label>
-                <select name="category" id="category">
-                    <option selected disabled hidden>Select ——</option>
-                    <option value="game">Games</option>
-                    <option value="technology">Technology</option>
-                    <option value="biology">Biology</option>
-                </select>
-                &emsp;
-                <label for="genre">Genre</label>
-                <select name="genre" id="genre">
-                    <option selected disabled hidden>Select ——</option>
-                    <option value="game">Horror</option>
-                    <option value="technology">FPS</option>
-                    <option value="biology">RPG</option>
-                </select>
-                &emsp;
-                <label for="sort">Sort by</label>
-                <select name="sort" id="sort" onchange="location=this.value;">
-                    <!-- FIXME: show dynamically -->
-                    <% if (route === '/ideas') { %>
-                        <option selected>Hit</option>
-                        <option value="../ideas/new">New</option>
-                        <option value="../ideas/top">Top</option>
-                    <% } else if (route === '/ideas/new') { %>
-                        <option value="/ideas">Hit</option>
-                        <option selected>New</option>
-                        <option value="../ideas/top">Top</option>
-                    <% } else { %>
-                        <option value="/ideas">Hit</option>
-                        <option value="../ideas/new">New</option>
-                        <option selected>Top</option>
-                    <% } %>
-                </select>
-            </ul>
-        </nav>
+        <%- include('../partials/ideaNav') %>
         <%- body %>
     </body>
     <hr>

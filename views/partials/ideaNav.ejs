@@ -1,0 +1,25 @@
+<nav class="ideasBodyNav">
+    <ul>
+        <!-- FIXME: Need to be dynamic based on the ejs file -->
+        <label>Category</label>
+        <select name="category" id="main">
+            <option selected disabled hidden>Select ——</option>
+            <option value="videogame">Video Game</option>
+            <option value="boardgame">Board Game</option>
+            <option value="technology">Technology</option>
+            <option value="engineering">Engineering</option>
+        </select>
+        &emsp;
+        <label for="genre">Genre</label>
+        <select name="genre" id="sub">
+            <option selected disabled hidden>Select ——</option>
+        </select>
+        &emsp;
+        <label>Sort by</label>
+        <select name="sort" id="sort" onchange="location=this.value;">
+            <option value="/ideas" <%= locals.hitSelected %>>Hit</option>
+            <option value="../ideas/new" <%= locals.newSelected %> >New</option>
+            <option value="../ideas/top" <%= locals.topSelected %>>Top</option>
+        </select>
+    </ul>
+</nav>

@@ -8,12 +8,12 @@ const devLogMimeTypes = ['text/plain', 'application/msword', 'application/vnd.op
 
 // <div><%= idea.date.toISOString().split('T')[0] %></div>
 
-// All ideas route <- get req send through path query
+// TODO: team-up function after there are two or more creators for an idea
+
 router.get('/', async (req, res) => {
     try {
         res.render('ideas/index', {
-            // FIXME: use req.params instead
-            route: req.originalUrl,
+            hitSelected: 'selected',
             layout: 'layouts/ideas',
             ideas: await Idea.find()
         });
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 router.get('/new', async (req, res) => {
     try {
         res.render('ideas/new', {
-            route: req.originalUrl,
+            newSelected: 'selected',
             layout: 'layouts/ideas',
             ideas: await Idea.find().sort({ date: 'desc' }).limit(25).exec()
         });
@@ -38,7 +38,7 @@ router.get('/new', async (req, res) => {
 router.get('/top', async (req, res) => {
     try {
         res.render('ideas/top', {
-            route: req.originalUrl,
+            topSelected: 'selected',
             layout: 'layouts/ideas',
             ideas: await Idea.find()
         });
@@ -64,7 +64,7 @@ router.get('/create', authenticated, async (req, res) => {
     }
 });
 
-// directly save file inside the idea with Buffer
+// directly save file inside the idea as a Buffer
 // FIXME: image transform
 function saveIdeaFiles(idea, coverImgEncoded, devLogEncoded) {
     if (!coverImgEncoded && !devLogEncoded) {
