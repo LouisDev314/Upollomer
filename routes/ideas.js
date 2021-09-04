@@ -95,8 +95,6 @@ function saveIdeaFiles(idea, coverImgEncoded, devLogEncoded) {
 }
 router.post('/', async (req, res) => {
     const idea = new Idea({
-        // FIXME: get value from select option
-        // FIXME: dynamically show selection boxes
         category: req.body.category,
         genre: req.body.genre,
         title: req.body.title,
