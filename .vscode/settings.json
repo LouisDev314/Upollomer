@@ -3,6 +3,7 @@
         "fieldname",
         "filepond",
         "javascripts",
-        "resave"
+        "resave",
+        "upollomer"
     ]
 }

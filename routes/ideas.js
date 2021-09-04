@@ -6,9 +6,17 @@ const authenticated = require('../passport/authenticated');
 const coverImgMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 const devLogMimeTypes = ['text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf'];
 
+const category = {
+    'Video Game':['RPG', 'FPS', 'MOBA', 'Card Game'],
+    'Board game':['Area control', 'Campaign', 'Deckbuilder', 'Dungeon-crawler'],
+    'Technology':['apps', 'algorithm'],
+    'Engineering':['robotics']
+}
+
 // <div><%= idea.date.toISOString().split('T')[0] %></div>
 
 // TODO: team-up function after there are two or more creators for an idea
+// TODO: dynamic title show & remove head from each page
 
 router.get('/', async (req, res) => {
     try {
@@ -56,7 +64,8 @@ router.get('/create', authenticated, async (req, res) => {
             idea: new Idea(),
             // TODO: friend list function?
             creators: await Creator.find(),
-            message: req.flash('postIdeaErr')
+            message: req.flash('postIdeaErr'),
+            category: category
         });
     } catch (e) {
         console.log('create idea error: ' + e.message);
@@ -92,6 +101,7 @@ function saveIdeaFiles(idea, coverImgEncoded, devLogEncoded) {
 router.post('/', async (req, res) => {
     const idea = new Idea({
         // FIXME: get value from select option
+        // FIXME: dynamically show selection boxes
         category: req.body.category,
         genre: req.body.genre,
         title: req.body.title,

@@ -1,23 +1,41 @@
 <!-- TODO: category icon -->
-<!-- FIXME: export option value from here -->
 <fieldset>
     <% if (locals.message) { %>
         <div class="postIdeaFlash">
             <%= message %> 
         </div>
-    <% } %> 
+    <% } %>
     <br>
     <div class="ideaTag">
-        <select name="category" id="category">
-            <option selected disabled hidden>Select a category ——</option>
-            <option value="<%= idea.category %>">Games</option>
-            <option value="film">Film</option>
+        <label>Category</label>
+        <select name="category" id="category" onchange="getSelectedValue();">
+            <option selected disabled hidden>Select ——</option>
+            <% if (locals.category) { %>
+                <% var i = -1; %> 
+                <% for (let key in category) { %>
+                    <% ++i %>
+                    <option value="<%= i %>"><%= key %></option>
+                <% } %>
+            <% } %>
         </select>
+
+        <script type="text/javascript">
+            function getSelectedValue() {
+                let value = document.getElementById("category").value;
+                console.log(value);
+            }
+            getSelectedValue();
+        </script>
+
         &emsp;
-        <!-- FIXME: dynamically shown -->
+        <label for="genre">Genre</label>
         <select name="genre" id="genre">
-            <option selected disabled hidden>Select a genre ——</option>
-            <option value="<%= idea.genre %>">RPG</option>
+            <option selected disabled hidden>Select ——</option>
+            <% if (locals.category) { %>
+                <% Object.values(category)[i].forEach(genre => { %> 
+                    <option value="<%= genre %>"><%= genre %></option>
+                <% }) %>
+            <% } %>
         </select>
     </div>
     <br>

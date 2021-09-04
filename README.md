@@ -36,6 +36,7 @@ P2P, C2B, B2C, C2C
   - university, high school, college students, to let them know that their ability and creativity are required and able to change even just a bit of the world, to let them feel less confused
   - to connect the technical ability of every student in this world, to let them collaborate without country boundaries (by the mature network communication tool development today)
   - to raise the creativity and productivity of society
+  - to find their dream team to achieve their goals
 
 **<u>Task</u>**
 
@@ -97,10 +98,14 @@ P2P, C2B, B2C, C2C
 
 17. On the idea page, instead of showing the ideas money raising percentage, shows the idea status and letting people to join by promoting the promise of the idea
 
-18. **Status:**
+18. **Co-Dreamers - tag || Ideas - selection**
+
+19. **Status:**
 
     - actively recruiting
     - allows to control open/close the request function
+    
+20. Creators' tags are limited -> if want to add more tag, need to pay to get a premium account
 
 **<u>Verification & Security</u>**
 

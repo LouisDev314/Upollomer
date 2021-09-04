@@ -3,36 +3,24 @@
     <head>
         <%- include('../partials/metaHead') %>
     </head>
-    <!-- include header from partials file -->
     <header>
         <%- include('../partials/header') %>
     </header>
     <hr>
     <body>
         <nav class="bodyNav">
-            <ul>
-                <!-- Need to be dynamic based on the ejs file -->
-                <label for="category">Category</label>
-                <select name="category" id="category">
-                    <option value="music">Music</option>
-                    <option value="art">Art</option>
-                    <option value="programming">Programming</option>
-                </select>
-                &emsp;
-                <label for="region">Region</label>
-                <select name="region" id="region" onchange="location=this.value;">
-                    <!-- import countries -->
-                </select>
-                &emsp;
-                <label for="sort">Sort by</label>
-                <select name="sort" id="sort" onchange="location=this.value;">
-                    <option value="">New</option>
-                    <option value="">Hit</option>
-                </select>
-                
-            </ul>
+            <!-- TODO: for here people can add many tags first then click search, so it will be a form submission -->
+            <form action="/routes/co-dreamers.js" method="POST">
+                <ul>
+                    <label for="region">Region</label>
+                    <select name="region" id="region">
+                        <!-- FIXME: import countries -->
+                        <!-- FIXME: return value from here -->
+                    </select>
+                </ul>
+                <input type="submit" />
+            </form>
         </nav>
-        
         <%- body %>
     </body>
     <hr>

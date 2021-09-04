@@ -3,6 +3,8 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
+// TODO: add international clock with dayjs
+
 // npm dependencies
 const express = require('express');
 const app = express();
@@ -53,6 +55,7 @@ app.use('/co-dreamers', require('./routes/co-dreamers'));
 app.use('/ideas', require('./routes/ideas'));
 app.use('/search', require('./routes/search'));
 app.use('/logout', require('./routes/logout'));
+app.use((req, res) => { res.status(404).render('404', { title: 'Error', layout: false }) });
 
 // db connection
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
