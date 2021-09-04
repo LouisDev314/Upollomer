@@ -6,12 +6,7 @@ const authenticated = require('../passport/authenticated');
 const coverImgMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 const devLogMimeTypes = ['text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf'];
 
-const category = {
-    'Video Game':['RPG', 'FPS', 'MOBA', 'Card Game'],
-    'Board game':['Area control', 'Campaign', 'Deckbuilder', 'Dungeon-crawler'],
-    'Technology':['apps', 'algorithm'],
-    'Engineering':['robotics']
-}
+const category = ['Video Game', 'Board game', 'Technology', 'Engineering'];
 
 // <div><%= idea.date.toISOString().split('T')[0] %></div>
 

@@ -1,4 +1,5 @@
 <!-- TODO: category icon -->
+
 <fieldset>
     <% if (locals.message) { %>
         <div class="postIdeaFlash">
@@ -11,11 +12,9 @@
         <select name="category" id="category" onchange="getSelectedValue();">
             <option selected disabled hidden>Select ——</option>
             <% if (locals.category) { %>
-                <% var i = -1; %> 
-                <% for (let key in category) { %>
-                    <% ++i %>
-                    <option value="<%= i %>"><%= key %></option>
-                <% } %>
+                <% category.forEach(option => { %>
+                    <option value="<%= option %>"><%= option %></option>
+                <% }) %>
             <% } %>
         </select>
 
@@ -31,11 +30,6 @@
         <label for="genre">Genre</label>
         <select name="genre" id="genre">
             <option selected disabled hidden>Select ——</option>
-            <% if (locals.category) { %>
-                <% Object.values(category)[i].forEach(genre => { %> 
-                    <option value="<%= genre %>"><%= genre %></option>
-                <% }) %>
-            <% } %>
         </select>
     </div>
     <br>
