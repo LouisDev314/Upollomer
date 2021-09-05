@@ -8,11 +8,11 @@ const ideaSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        // required: true
+        required: true
     },
     genre: {
         type: String,
-        // required: true
+        required: true
     },
     title: {
         type: String,
@@ -21,13 +21,17 @@ const ideaSchema = new mongoose.Schema({
     description: {
         type: String
     },
+    country: {
+        type: String,
+        required: true
+    },
     region: {
         type: String,
-        // required: true
+        required: true
     },
     status: {
         type: String,
-        // required: true
+        required: true
     },
     // files will be stored in file system
     coverImg: {

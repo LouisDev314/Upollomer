@@ -3,6 +3,8 @@ const router = express.Router();
 const Idea = require('../models/idea');
 const Creator = require('../models/creator');
 
+const category = ['Video Game', 'Board game', 'Technology', 'Engineering'];
+
 // Get the thing user searched
 router.get('/', async (req, res) => {
     let ideaSearchOptions = {};
@@ -20,8 +22,10 @@ router.get('/', async (req, res) => {
         const ideas = await Idea.find(ideaSearchOptions);
         const creators = await Creator.find(creatorSearchOptions);
         res.render('search', {
+            layout: 'layouts/ideas',
             ideas: ideas,
             creators: creators,
+            category: category,
             searchOptions: req.query.search,
             searchCreators: searchCreators
         });

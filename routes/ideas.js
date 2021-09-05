@@ -13,12 +13,15 @@ const category = ['Video Game', 'Board game', 'Technology', 'Engineering'];
 // TODO: team-up function after there are two or more creators for an idea
 // TODO: dynamic title show & remove head from each page
 
+
+// TODO: optimize searching options with category and genre included
 router.get('/', async (req, res) => {
     try {
         res.render('ideas/index', {
             hitSelected: 'selected',
             layout: 'layouts/ideas',
-            ideas: await Idea.find()
+            ideas: await Idea.find(),
+            category: category
         });
     } catch {
         res.redirect('/');
@@ -30,6 +33,7 @@ router.get('/new', async (req, res) => {
         res.render('ideas/new', {
             newSelected: 'selected',
             layout: 'layouts/ideas',
+            category: category,
             ideas: await Idea.find().sort({ date: 'desc' }).limit(25).exec()
         });
     } catch (e) {
@@ -43,6 +47,7 @@ router.get('/top', async (req, res) => {
         res.render('ideas/top', {
             topSelected: 'selected',
             layout: 'layouts/ideas',
+            category: category,
             ideas: await Idea.find()
         });
     } catch (e) {
@@ -99,12 +104,12 @@ router.post('/', async (req, res) => {
         genre: req.body.genre,
         title: req.body.title,
         description: req.body.description,
-        // FIXME: import all countries in the world
+        country: req.body.country,
         region: req.body.region,
         status: req.body.status,
         coDreamer: req.body.coDreamer    
     });
-
+    // FIXME: fix devLog upload
     try {
         saveIdeaFiles(idea, req.body.coverImg, req.body.devLog);
         const newIdea = await idea.save();

@@ -8,7 +8,7 @@
     <br>
     <div class="ideaTag">
         <label>Category</label>
-        <select name="category" id="category" onchange="getSelectedValue();">
+        <select name="category" id="category">
             <option selected disabled hidden>Select ——</option>
             <% if (locals.category) { %>
                 <% category.forEach(option => { %>
@@ -16,15 +16,6 @@
                 <% }) %>
             <% } %>
         </select>
-
-        <script type="text/javascript">
-            function getSelectedValue() {
-                let value = document.getElementById("category").value;
-                console.log(value);
-            }
-            getSelectedValue();
-        </script>
-
         &emsp;
         <label for="genre">Genre</label>
         <select name="genre" id="genre">
@@ -44,23 +35,29 @@
         <textarea style="resize:none" rows="8" cols="45" maxlength="300" id="description" name="description" value="<%= idea.description %>" required></textarea>
     </div>
     <br>
-    <div class="ideaRegion">
-        <label for="region">Region</label>
-        <br>
-        <select name="region" id="region">
-            <option value="<%= idea.region %>" selected>Anywhere on Earth</option>
-            <!-- FIXME: import all countries here -->
-        </select>
+    <!-- Country-Region Dropdown -->
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Country</label>
+        <div class="col-sm-10">
+            <select name="country" class="form-control gds-cr" country-data-region-id="gds-cr-one" ></select>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="gds-cr-one" class="col-sm-2 control-label">Region</label>
+        <div class="col-sm-10">
+            <select name="region" class="form-control" id="gds-cr-one"></select>
+        </div>
     </div>
     <br>
     <div class="ideaStatus">
         <label for="status">Idea Status</label>
         <br>
         <select name="status" id="status">
-            <option value="<%= idea.status %>" selected>Initializing</option>
-            <option value="">In progress</option>
-            <option value="">Pre-launch</option>
-            <option value="">Post-launch</option>
+            <option value="Initializing" selected>Initializing</option>
+            <option value="In progress">In progress</option>
+            <option value="Pre-launch">Pre-launch</option>
+            <option value="Post-launch">Post-launch</option>
         </select>
     </div>
     <br>
@@ -71,24 +68,9 @@
     </div>
     <br>
     <div class="devLog">
-        <!-- FIXME: multiple uploads -->
         <label>Dev Log</label>
         <br>
         <input type="file" name="devLog">
-    </div>
-    <br>
-    <div class="co-dreamers">
-        <label for="co-dreamers">Co-Dreamers (temp)</label>
-        <br>
-        <!-- TODO: put this function w/ friend list or user page -->
-        <!-- TODO: add co-dreamers with a tag system -->
-        <select name="coDreamer">
-            <% if (locals.creators) { %>
-                <% creators.forEach(creator => { %>
-                    <option label="<%= creator.username %>" value="<%= creator.id %>"></option>
-                <% }) %>
-            <% } %>
-        </select>
     </div>
     <br>
 </fieldset>

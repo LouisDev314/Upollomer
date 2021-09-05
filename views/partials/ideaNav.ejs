@@ -1,15 +1,17 @@
 <nav class="ideaNav">
     <ul>
-        <!-- FIXME: Need to be dynamic based on the ejs file -->
         <label>Category</label>
-        <select name="category" id="main">
+        <select name="category" id="category">
             <option selected disabled hidden>Select ——</option>
-            
+            <% if (locals.category) { %>
+                <% category.forEach(option => { %>
+                    <option value="<%= option %>"><%= option %></option>
+                <% }) %>
+            <% } %>
         </select>
-        <!-- Get value from above select and put it into a js -->
         &emsp;
         <label for="genre">Genre</label>
-        <select name="genre" id="sub">
+        <select name="genre" id="genre">
             <option selected disabled hidden>Select ——</option>
         </select>
         &emsp;
