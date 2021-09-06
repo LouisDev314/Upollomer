@@ -14,7 +14,8 @@ const category = ['Video Game', 'Board game', 'Technology', 'Engineering'];
 // TODO: dynamic title show & remove head from each page
 
 
-// TODO: optimize searching options with category and genre included
+// FIXME: optimize searching options with category and genre included
+// FIXME: change to dynamic title showing
 router.get('/', async (req, res) => {
     try {
         res.render('ideas/index', {

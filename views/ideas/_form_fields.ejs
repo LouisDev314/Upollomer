@@ -7,7 +7,7 @@
     <% } %>
     <br>
     <div class="ideaTag">
-        <label>Category</label>
+        <label for="category">Category</label>
         <select name="category" id="category">
             <option selected disabled hidden>Select ——</option>
             <% if (locals.category) { %>
@@ -70,7 +70,7 @@
     <div class="devLog">
         <label>Dev Log</label>
         <br>
-        <input type="file" name="devLog">
+        <input type="file" name="devLog" class="filepond">
     </div>
     <br>
 </fieldset>

@@ -8,30 +8,30 @@ const ideaSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        required: true
+        // required: true
     },
     genre: {
         type: String,
-        required: true
+        // required: true
     },
     title: {
         type: String,
-        required: true
+        // required: true
     },
     description: {
         type: String
     },
     country: {
         type: String,
-        required: true
+        // required: true
     },
     region: {
         type: String,
-        required: true
+        // required: true
     },
     status: {
         type: String,
-        required: true
+        // required: true
     },
     // files will be stored in file system
     coverImg: {
@@ -62,11 +62,10 @@ ideaSchema.virtual('coverImgPath').get(function() {
     }
 });
 
-// ideaSchema.virtual('devLogPath').get(function() {
-//     // the actual function here is to allow the 'this' reference for the actual idea object that called this property
-//     if (this.devLog && this.devLogType) {
-//         return `data:${this.devLogType};charset=utf-8;base-64,${this.devLog.toString('base64')}`;
-//     }
-// });
+ideaSchema.virtual('devLogPath').get(function() {
+    if (this.devLog && this.devLogType) {
+        return `data:${this.devLogType};charset=utf-8;base-64,${this.devLog.toString('base64')}`;
+    }
+});
 
 module.exports = mongoose.model('Idea', ideaSchema);
