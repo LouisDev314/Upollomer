@@ -4,7 +4,7 @@ const Idea = require('../models/idea');
 const Creator = require('../models/creator');
 const authenticated = require('../passport/authenticated');
 const coverImgMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
-const devLogMimeTypes = ['text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf'];
+// const devLogMimeTypes = ['text/plain', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/pdf'];
 
 const category = ['Video Game', 'Board game', 'Technology', 'Engineering'];
 
@@ -76,28 +76,28 @@ router.get('/create', authenticated, async (req, res) => {
 
 // directly save file inside the idea as a Buffer
 // FIXME: image transform
-function saveIdeaFiles(idea, coverImgEncoded, devLogEncoded) {
-    if (!coverImgEncoded && !devLogEncoded) {
+function saveIdeaFiles(idea, coverImgEncoded) {  // , devLogEncoded
+    if (!coverImgEncoded) {  // //  && !devLogEncoded
         return;
     }
     let coverImg;
-    let devLog;
+    // let devLog;
     // to parse the base 64 encoded JSON string from filepond to a JS understandable JSON object
     if (coverImgEncoded) {
         coverImg = JSON.parse(coverImgEncoded);
     }
-    if (devLogEncoded) {
-        devLog = JSON.parse(devLogEncoded);
-    }
+    // if (devLogEncoded) {
+    //     devLog = JSON.parse(devLogEncoded);
+    // }
     if (coverImg && coverImgMimeTypes.includes(coverImg.type)) {
         // convert to buffer from base64 encoded JSON object property
         idea.coverImg = new Buffer.from(coverImg.data, 'base64');
         idea.coverImgType = coverImg.type;
     }
-    if (devLog && devLogMimeTypes.includes(devLog.type)) {
-        idea.devLog = new Buffer.from(devLog.data, 'base64');
-        idea.devLogType = devLog.type;
-    }
+    // if (devLog && devLogMimeTypes.includes(devLog.type)) {
+    //     idea.devLog = new Buffer.from(devLog.data, 'base64');
+    //     idea.devLogType = devLog.type;
+    // }
 }
 router.post('/', async (req, res) => {
     const idea = new Idea({
@@ -110,9 +110,10 @@ router.post('/', async (req, res) => {
         status: req.body.status,
         coDreamer: req.body.coDreamer    
     });
-    // FIXME: fix devLog upload
+    // TODO: to be decided devLog upload system (as online markdown / blog system / file upload)
     try {
-        saveIdeaFiles(idea, req.body.coverImg, req.body.devLog);
+        // , req.body.devLog
+        saveIdeaFiles(idea, req.body.coverImg);
         const newIdea = await idea.save();
         // res.redirect(`ideas/${newIdea.id}`)
         res.redirect('ideas');

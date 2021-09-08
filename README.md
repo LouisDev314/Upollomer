@@ -37,6 +37,7 @@ P2P, C2B, B2C, C2C
   - to connect the technical ability of every student in this world, to let them collaborate without country boundaries (by the mature network communication tool development today)
   - to raise the creativity and productivity of society
   - to find their dream team to achieve their goals
+- High transparency of funding request and the place it goes
 
 **<u>Task</u>**
 
@@ -106,6 +107,8 @@ P2P, C2B, B2C, C2C
     - allows to control open/close the request function
     
 20. Creators' tags are limited -> if want to add more tag, need to pay to get a premium account
+
+21. Dev log is a must after crowding funding is started
 
 **<u>Verification & Security</u>**
 

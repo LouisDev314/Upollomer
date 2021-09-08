@@ -33,7 +33,6 @@ const ideaSchema = new mongoose.Schema({
         type: String,
         // required: true
     },
-    // files will be stored in file system
     coverImg: {
         // buffer of the data representing entire image (the base 64 code)
         type: Buffer
@@ -62,10 +61,10 @@ ideaSchema.virtual('coverImgPath').get(function() {
     }
 });
 
-ideaSchema.virtual('devLogPath').get(function() {
-    if (this.devLog && this.devLogType) {
-        return `data:${this.devLogType};charset=utf-8;base-64,${this.devLog.toString('base64')}`;
-    }
-});
+// ideaSchema.virtual('devLogPath').get(function() {
+//     if (this.devLog && this.devLogType) {
+//         return `data:${this.devLogType};charset=utf-8;base-64,${this.devLog.toString('base64')}`;
+//     }
+// });
 
 module.exports = mongoose.model('Idea', ideaSchema);

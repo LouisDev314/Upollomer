@@ -12,11 +12,6 @@
                 <div><%= idea.title %></div>
                 <div><%= idea.description %></div>
                 <div>Creators: <%= idea.coDreamer %> </div>
-                <% if (idea.devLogPath) { %>
-                    <!-- FIXME: try to do the decode base64 after extracting data from text file here -->
-                    <a href="<%= idea.devLogPath %>" download="">Download devLogs</a>
-                    
-                <% } %>
                 <br>
             <% }) %>
         </div>
