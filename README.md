@@ -23,7 +23,7 @@ P2P, C2B, B2C, C2C
   - 以創意、個人獨特能力等去發揮價值同時創造未來
   - 項目方面：利用熱誠和創意去吸引人而非金錢
   - 創作者方面：可依照自己的需求，想做的項目內容，興趣等作為出發點去尋找項目加入
-  - 
+  - 可以和教育平台連接，從創造需求，到迎合需求，再到學習去成為需求
 - a site for problem solving ideas (i.e. 空氣污染問題，油污問題)
 - When the age of AI and autonomy has come (prepare us for post-autonomy era), people and the society structure will change to creation-oriented development path. When most of the repetitive labor forces are being freed, humans can start playing the strongest and most unique of mankind, creativity
 - Also, to prevent the high-dependency on big corporates to wait for them to tell us what our future should have or should be, we, the elements of the society, the community that is closest to understand what each other actually need can also contribute to a better future that fits our needs more -> avoid highly centralized dependencies, build the future of community (as mankind) together and allow each of us to contribute (blockchain)
@@ -38,6 +38,11 @@ P2P, C2B, B2C, C2C
   - to raise the creativity and productivity of society
   - to find their dream team to achieve their goals
 - High transparency of funding request and the place it goes
+- Mutual trust system
+- People don't have to rely on centralized corporation but connect with each other directly (P2P), not social network but technical ability network
+- 降低創業/組建團隊創造項目的成本（人脈、資金、技術），鼓勵年輕人透過尋找志同道合和技能契合度高的人們共同實現目標，自我創造價值而不只是會進入公司掙錢
+- 與其向中心證明價值，不如向所有的技術力節點互相證明價值，從而形成共有價值
+- 複利效應：不斷鼓勵更多的人投入創造價值、滿足意義
 
 **<u>Task</u>**
 

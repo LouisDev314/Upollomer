@@ -10,14 +10,14 @@
     <body>
         <nav class="bodyNav">
             <!-- TODO: for here people can add many tags first then click search, so it will be a form submission -->
-            <form action="/routes/co-dreamers.js" method="POST">
-                <ul>
-                    <label for="region">Region</label>
-                    <select name="region" id="region">
-                        <!-- FIXME: import countries -->
-                    </select>
-                </ul>
-                <input type="submit" />
+            <form action="/co-dreamers" method="POST">
+                <label class="col-sm-2 control-label">Country</label>
+                <select name="country" class="form-control gds-cr" country-data-region-id="gds-cr-one" ></select>
+                &emsp;
+                <label for="gds-cr-one" class="col-sm-2 control-label">Region</label>
+                <select name="region" class="form-control" id="gds-cr-one"></select>
+                &emsp;
+                <input type="submit" value="search"/>
             </form>
         </nav>
         <%- body %>

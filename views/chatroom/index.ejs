@@ -1,0 +1,30 @@
+<div class="join-container">
+  <header class="join-header">
+      <h2>Chatroom (index)</h2>
+  </header>
+  <main class="join-main">
+      <form action="/chatroom" method="POST">
+          <div class="form-control">
+              <label for="username">Username</label>
+              <input type="text" name="username" id="username" placeholder="Enter username..." required />
+          </div>
+          <div class="form-control">
+              <label for="room">Room</label>
+              <select name="room" id="room">
+                <option value="temp">Temp</option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Join Chat</button>
+      </form>
+  </main>
+</div>
+
+
+
+<!-- <fieldset>
+    <div id="message-container"></div>
+    <form id="send-container">
+        <input type="text" id="message-input">
+        <button type="submit" id="send-button">Send</button>
+    </form>
+</fieldset> -->

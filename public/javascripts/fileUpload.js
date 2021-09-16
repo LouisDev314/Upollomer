@@ -12,18 +12,7 @@ FilePond.setOptions({
     stylePanelAspectRatio: '16:9',
     imageCropAspectRatio: 1,
     imageResizeTargetWidth: 240,
-    imageResizeTargetHeight: 135,
-    imageTransformVariants: {
-        thumb_medium_: (transforms) => {
-            transforms.resize = {
-                size: {
-                    width: 240,
-                    height: 135
-                }
-            };
-            return transforms;
-        }
-    }
+    imageResizeTargetHeight: 135
 });
 
 FilePond.parse(document.body);

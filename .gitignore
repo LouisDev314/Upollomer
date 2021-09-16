@@ -1,5 +1,4 @@
 .env
 node_modules
 .rest
-public/uploads
 temp.js

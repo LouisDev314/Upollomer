@@ -40,12 +40,6 @@ const ideaSchema = new mongoose.Schema({
     coverImgType: {
         type: String
     },
-    devLog: {
-        type: Buffer
-    },
-    devLogType: {
-        type: String
-    },
     coDreamer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Creator'
@@ -60,11 +54,5 @@ ideaSchema.virtual('coverImgPath').get(function() {
         return `data:${this.coverImgType};charset=utf-8;base64,${this.coverImg.toString('base64')}`;
     }
 });
-
-// ideaSchema.virtual('devLogPath').get(function() {
-//     if (this.devLog && this.devLogType) {
-//         return `data:${this.devLogType};charset=utf-8;base-64,${this.devLog.toString('base64')}`;
-//     }
-// });
 
 module.exports = mongoose.model('Idea', ideaSchema);

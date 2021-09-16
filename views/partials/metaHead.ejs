@@ -1,5 +1,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- need to initiate the moment connection is formed and page is ready to render -->
 
 <!-- Filepond -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,6 @@
 <script defer src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script defer src="javascripts/geodatasource-cr.min.js"></script>
-<link rel="stylesheet" href="stylesheets/geodatasource-countryflag.css">
 <link rel="gettext" type="application/x-po" href="languages/en/LC_MESSAGES/en.po" />
 <script defer type="text/javascript" src="javascripts/Gettext.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script>
@@ -28,3 +28,11 @@
 <!-- own script to set up filepond library -->
 <script defer src="javascripts/fileUpload.js"></script>
 <script defer src="javascripts/dynamicDropdown.js"></script>
+
+<!-- socket.io -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js" integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4=" crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script defer src="javascripts/socket.js"></script>
+
+<title><%= locals.title %></title>

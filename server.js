@@ -3,11 +3,26 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
-// TODO: add international clock with dayjs
-
-// npm dependencies
+// npm dependencies - servers
 const express = require('express');
 const app = express();
+const server = app.listen(3000, () => console.log(`Listening at http://localhost:3000`));
+const io = require('socket.io')(server);
+// runs every time a client connects to the io server, then give a socket instance to each of them
+io.on('connection', socket => {
+    // emit only send to sender-client while broadcast send to every client except the sender
+    // TODO: need to broadcast username from here
+    socket.emit('self-connected', 'You joined the chatroom');
+    socket.broadcast.emit('creator-connected', `${socket.id}`);
+    socket.on('disconnect', () => {
+        io.emit('creator-disconnected', `${socket.id}`);
+    });
+    socket.on('chat-message', message => {
+        io.emit('message', message);
+    });
+});
+
+// others
 const mongoose = require('mongoose');
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
@@ -56,6 +71,7 @@ app.use('/co-dreamers', require('./routes/co-dreamers'));
 app.use('/ideas', require('./routes/ideas'));
 app.use('/search', require('./routes/search'));
 app.use('/logout', require('./routes/logout'));
+app.use('/chatroom', require('./routes/chatroom'));
 app.use((req, res) => { res.status(404).render('404', { title: 'Error', layout: false }) });
 
 // db connection
@@ -63,5 +79,3 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTo
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Database'));
-
-app.listen(process.env.PORT || 3000, () => console.log(`Listening at http://localhost:3000`));

@@ -63,7 +63,7 @@ router.get('/create', authenticated, async (req, res) => {
         res.render('ideas/create', {
             // Create an Idea object for creation (adding properties to it)
             idea: new Idea(),
-            // TODO: friend list function?
+            // TODO: friend list function
             creators: await Creator.find(),
             message: req.flash('postIdeaErr'),
             category: category
@@ -76,28 +76,20 @@ router.get('/create', authenticated, async (req, res) => {
 
 // directly save file inside the idea as a Buffer
 // FIXME: image transform
-function saveIdeaFiles(idea, coverImgEncoded) {  // , devLogEncoded
-    if (!coverImgEncoded) {  // //  && !devLogEncoded
+function saveIdeaFiles(idea, coverImgEncoded) {
+    if (!coverImgEncoded) {
         return;
     }
     let coverImg;
-    // let devLog;
     // to parse the base 64 encoded JSON string from filepond to a JS understandable JSON object
     if (coverImgEncoded) {
         coverImg = JSON.parse(coverImgEncoded);
     }
-    // if (devLogEncoded) {
-    //     devLog = JSON.parse(devLogEncoded);
-    // }
     if (coverImg && coverImgMimeTypes.includes(coverImg.type)) {
         // convert to buffer from base64 encoded JSON object property
         idea.coverImg = new Buffer.from(coverImg.data, 'base64');
         idea.coverImgType = coverImg.type;
     }
-    // if (devLog && devLogMimeTypes.includes(devLog.type)) {
-    //     idea.devLog = new Buffer.from(devLog.data, 'base64');
-    //     idea.devLogType = devLog.type;
-    // }
 }
 router.post('/', async (req, res) => {
     const idea = new Idea({
@@ -110,9 +102,7 @@ router.post('/', async (req, res) => {
         status: req.body.status,
         coDreamer: req.body.coDreamer    
     });
-    // TODO: to be decided devLog upload system (as online markdown / blog system / file upload)
     try {
-        // , req.body.devLog
         saveIdeaFiles(idea, req.body.coverImg);
         const newIdea = await idea.save();
         // res.redirect(`ideas/${newIdea.id}`)

@@ -18,4 +18,9 @@ router.get('/new', async (req, res) => {
     })
 });
 
+// TODO: search for certain co-dreamers with tags
+router.post('/', async (req, res) => {
+    res.send('This is the search for co-dreamers page.')
+});
+
 module.exports = router;
