@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     res.render('chatroom/index', {
-        title: 'Chatroom —— Upollomer'
+        title: 'Chatroom —— Upollomer',
     });
 });
 

@@ -12,33 +12,39 @@ chatForm.addEventListener('submit', e => {
     const message = e.target.elements.msg.value;
     // emit this message to the server
     socket.emit('chat-message', message);
+    // clear input
     e.target.elements.msg.value = '';
+    // e.target.elements.msg.focus();
 });
 
 socket.on('self-connected', message => {
+    message.text = 'You joined the chatroom';
     appendMessage(message);
 });
 
 socket.on('message', message => {
     appendMessage(message);
+    // let the message scroll
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
 });
 
-socket.on('creator-connected', socketId => {
-    // appendMessage(`${username} joined the chat`);
-    console.log(socketId + ' has joined the chatroom');
+socket.on('creator-connected', message => {
+    message.text = '{Username} joined the chatroom';
+    appendMessage(message);
 });
 
-socket.on('creator-disconnected', socketId => {
-    // appendMessage(username);
-    console.log(socketId + ' has left the chatroom');
+socket.on('creator-disconnected', message => {
+    message.text = '{Username} left the chatroom';
+    appendMessage(message);
 });
 
 function appendMessage(message) {
     const messageElement = document.createElement('div');
-    // FIXME: change the innerText here bae on the vid
-    messageElement.innerHTML = `<p class="meta">Name <span>3:00pm</span></p>
+    // FIXME: change the innerText here base on the vid
+    messageElement.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
     <p class="text">
-        ${message}
+        ${message.text}
     </p>`;
     chatMessages.append(messageElement);
 }

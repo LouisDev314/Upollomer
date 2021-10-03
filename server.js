@@ -7,18 +7,20 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const app = express();
 const server = app.listen(3000, () => console.log(`Listening at http://localhost:3000`));
+// TODO: username should be imported from the utils js file
+const formatMessage = require('./utils/messages');
 const io = require('socket.io')(server);
 // runs every time a client connects to the io server, then give a socket instance to each of them
 io.on('connection', socket => {
     // emit only send to sender-client while broadcast send to every client except the sender
     // TODO: need to broadcast username from here
-    socket.emit('self-connected', 'You joined the chatroom');
-    socket.broadcast.emit('creator-connected', `${socket.id}`);
+    socket.emit('self-connected', formatMessage('Chatroom Bot'));
+    socket.broadcast.emit('creator-connected', formatMessage('Chatroom Bot'));
     socket.on('disconnect', () => {
-        io.emit('creator-disconnected', `${socket.id}`);
+        io.emit('creator-disconnected', formatMessage('Chatroom Bot'));
     });
     socket.on('chat-message', message => {
-        io.emit('message', message);
+        io.emit('message', formatMessage('Username', message));
     });
 });
 
@@ -38,7 +40,7 @@ app.set('layout', 'layouts/layout');
 app.use(expressLayouts); // allows to create a layout file for all of HTML
 // app.use(express.static(__dirname + 'public'));
 app.use('*/javascripts', express.static(path.join(__dirname, 'public/javascripts')));
-app.use('*/stylesheets', express.static(path.join(__dirname, 'public/styles')));
+app.use('*/stylesheets', express.static(path.join(__dirname, 'public/stylesheets')));
 app.use('*/languages', express.static(path.join(__dirname, 'public/languages')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
