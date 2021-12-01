@@ -10,7 +10,7 @@ This is the init version of Upollomer, basic framework
 
 P2P, C2B, B2C, C2C
 
-**<u>Aim</u>**
+**<u>Goals</u>**
 
 - Connect Community to do innovation
 - Apply the concept of blockchain, let people who have specialized skills to create value by joining each other's developing idea. Instead of rushing to big companies, people themselves can form technical blockchain which connects people and create value together depending on each other but not highly centralized social development direction or corporations
