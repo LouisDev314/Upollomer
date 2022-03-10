@@ -7,23 +7,24 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const server = app.listen(port, () => console.log(`Listening at http://localhost:3000`));
+// const server = app.listen(port, () => console.log(`Listening at http://localhost:3000`));
+app.listen(port, () => console.log(`Listening at http://localhost:3000`));
 // TODO: username should be imported from the utils js file
-const formatMessage = require('./utils/messages');
-const io = require('socket.io')(server);
-// runs every time a client connects to the io server, then give a socket instance to each of them
-io.on('connection', socket => {
-    // emit only send to sender-client while broadcast send to every client except the sender
-    // TODO: need to broadcast username from here
-    socket.emit('self-connected', formatMessage('Chatroom Bot'));
-    socket.broadcast.emit('creator-connected', formatMessage('Chatroom Bot'));
-    socket.on('disconnect', () => {
-        io.emit('creator-disconnected', formatMessage('Chatroom Bot'));
-    });
-    socket.on('chat-message', message => {
-        io.emit('message', formatMessage('Username', message));
-    });
-});
+// const formatMessage = require('./utils/messages');
+// const io = require('socket.io')(server);
+// // runs every time a client connects to the io server, then give a socket instance to each of them
+// io.on('connection', socket => {
+//     // emit only send to sender-client while broadcast send to every client except the sender
+//     // TODO: need to broadcast username from here
+//     socket.emit('self-connected', formatMessage('Chatroom Bot'));
+//     socket.broadcast.emit('creator-connected', formatMessage('Chatroom Bot'));
+//     socket.on('disconnect', () => {
+//         io.emit('creator-disconnected', formatMessage('Chatroom Bot'));
+//     });
+//     socket.on('chat-message', message => {
+//         io.emit('message', formatMessage('Username', message));
+//     });
+// });
 
 // others
 const mongoose = require('mongoose');
