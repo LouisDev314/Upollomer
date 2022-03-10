@@ -7,14 +7,9 @@
 </div>
 <nav class="header">
     <!-- The title comes with icon -->
-    <h1 class="webTitle">Upollomer</h1>
+    <h1 class="webTitle"><a href="/">Upollomer</a></h1>
     <nav class="headerNav">
         <ul>
-            <% if (locals.username) { %>
-                <li class="username"></li>
-                    Welcome! <%= username %>
-                </li>
-            <% } %> 
             <li><a href="../ideas">Ideas</a></li>
             <li><a href="../co-dreamers">Co-Dreamers (supplier, customers)</a></li>
             <li>Incubators</li>
@@ -32,7 +27,7 @@
                     <button type="submit">&#128269;</button>
                 </form>
             </li>
-            <!-- TODO: change to user after authenticated -->
+            <!-- TODO: change after authenticated -->
             <li><a href="../login">Log in</a></li>
             <li><a href="../register">Register</a></li>
         </ul>

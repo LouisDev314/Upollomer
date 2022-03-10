@@ -6,7 +6,8 @@ if (process.env.NODE_ENV !== 'production') {
 // npm dependencies - servers
 const express = require('express');
 const app = express();
-const server = app.listen(3000, () => console.log(`Listening at http://localhost:3000`));
+const port = process.env.PORT || 3000;
+const server = app.listen(port, () => console.log(`Listening at http://localhost:3000`));
 // TODO: username should be imported from the utils js file
 const formatMessage = require('./utils/messages');
 const io = require('socket.io')(server);

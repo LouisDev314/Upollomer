@@ -8,9 +8,13 @@
         <ul>
             <% ideas.forEach(idea => { %>
                 <li class="searchedIdeas">
-                    <%= idea.title %>
+                    <% if (idea.coverImgPath) { %> 
+                        <div><img height="135" width="240" src="<%= idea.coverImgPath %>"></div>
+                    <% } %>
+                    <div><%= idea.title %></div>
+                    <div><%= idea.description %></div>
+                    <div>Creators: <%= idea.coDreamer %> </div>
                     <br>
-                    <%= idea.description %>
                     <div>Created date: <%= idea.date.toISOString().split('T')[0] %></div>
                 </li>
                 <br>
