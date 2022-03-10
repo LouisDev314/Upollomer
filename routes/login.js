@@ -7,7 +7,7 @@ const initializePassport = require('../passport/passport-config');
 initializePassport(passport);
 
 router.get('/', unauthenticated, (req, res) => {
-    res.render('login', {  });
+    res.render('login', { layout: false });
 });
 
 router.post('/', unauthenticated, passport.authenticate('local', {
