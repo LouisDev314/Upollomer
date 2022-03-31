@@ -61,7 +61,7 @@ router.get('/top', async (req, res) => {
 router.get('/create', authenticated, async (req, res) => {
     try {
         res.render('ideas/create', {
-            layout: 'layouts/ideas',
+            layout: 'layouts/authLayout',
             // Create an Idea object for creation (adding properties to it)
             idea: new Idea(),
             // TODO: friend list function
