@@ -1,16 +1,14 @@
 # Upollomer
 
-Nurture entrepreneurship
+Nurture Game Developer & Thrive As Community
+
+## https://youtu.be/iAlpEEeR1Gc ##
 
 ------
 
 <u>v1.0</u>
 
 This is the init version of Upollomer, basic framework
-
-**<u>Aim</u>**
-
-- 
 
 **<u>Task</u>**
 
